@@ -1,0 +1,21 @@
+<?php $this->layout('default') ?>
+
+<?php $this->partial('navbar', ['active' => 'r']) ?>
+
+<h1>GCDb &#9656; Register</h1>
+
+<?= $f->start() ?>
+  <p>
+    <?= $f->label('Email:', 'email') ?>
+    <?= $f->email('email', ['required' => true, 'autofocus' => true]) ?>
+  </p>
+  <p>
+    <?= $f->label('Password:', 'password') ?>
+    <?= $f->password('password', ['required' => true, 'minlength' => 8]) ?>
+  </p>
+  <p>
+    <?= $f->label('Confirm password:', 'confirm') ?>
+    <?= $f->password('confirm', ['required' => true, 'minlength' => 8]) ?>
+  </p>
+  <?= $f->submit() ?>
+<?= $f->end() ?>

@@ -1,0 +1,4 @@
+src/db/*.db
+tags
+.nova/*
+config.codekit3

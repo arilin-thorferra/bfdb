@@ -1,0 +1,17 @@
+<?php $this->layout('default') ?>
+
+<?php $this->partial('navbar', ['active' => 'li']) ?>
+
+<h1>GCDb &#9656; Sign In</h1>
+
+<?= $f->start() ?>
+  <p>
+    <?= $f->label('Email:', 'email') ?>
+    <?= $f->email('email', ['required' => true, 'autofocus' => true]) ?>
+  </p>
+  <p>
+    <?= $f->label('Password:', 'password') ?>
+    <?= $f->password('password', ['required' => true, 'minlength' => 8]) ?>
+  </p>
+  <?= $f->submit() ?>
+<?= $f->end() ?>
