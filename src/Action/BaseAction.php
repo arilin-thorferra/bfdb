@@ -14,6 +14,9 @@ abstract class BaseAction
     protected $request;
     protected $response;
 
+    const ALLOW = [];
+    const DENY = [];
+
     /**
      * Action constructor
      * 
@@ -68,5 +71,37 @@ abstract class BaseAction
         }
         $args = $args + [$formvar => $f];
         return $this->renderResponse($file, $args);
+    }
+
+    /**
+     * Authorize access to an action
+     * 
+     * This method is called before all action methods, and must return
+     * TRUE for the user to be allowed to take the action. The default
+     * implementation checks the method name against ALLOW or DENY constants
+     * that whitelist or blacklist actions in that class for users who are
+     * not logged in: ALLOW lists methods they are allowed to use; DENY lists
+     * methods they are not. The two lists are mutually exclusive. Any action
+     * in the class that is not in the provided list is blocked or granted.
+     * 
+     * This method can be overridden in child classes to perform other checks
+     * like administration roles.
+     *
+     * @param string $method
+     * @return boolean
+     */
+    public function grantAccess(string $method) : bool
+    {
+        if (!empty($this::ALLOW)) {
+            if (!in_array($method, $this::ALLOW) && !isset($_SESSION['user'])) {
+                return false;
+            }
+        }
+        if (!empty($this::DENY)) {
+            if (in_array($method, $this::DENY) && !isset($_SESSION['user'])) {
+                return false;
+            }
+        }
+        return true;
     }
 }
