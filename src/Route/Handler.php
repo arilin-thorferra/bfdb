@@ -91,7 +91,7 @@ class Handler
         $action = new $action_class($request);
         $method = $route->getMethod();
         // check if this method is white- or black-listed
-        if ($action->denyAccess($method)) {
+        if (!$action->grantAccess($method)) {
             return new Response(403);
         }
         $call = $request->getMethod() . '_' . $method;

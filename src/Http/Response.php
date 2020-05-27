@@ -127,6 +127,7 @@ class Response
         $this->status_code = $code;
         if ($clear && $code != 204) {
             $reason = self::REASON[$code];
+            // TODO check for existence of error templates to use instead
             $this->body = "<html><style>.debuginfo{whitespace-pre;font-family:monospace;color:#900;margin-top:2em}</style></head><body><h1>$code $reason</h1></body></html>";
         }
         return $this;

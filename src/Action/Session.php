@@ -8,15 +8,49 @@ use Form;
 
 class Session extends BaseAction {
 
+    // login form
     public function get_login()
     {
+        if ($_SESSION['user']) {
+            return $this->response->setStatus(418);
+        }
         return $this->renderFormResponse('login', new Form());
     }
 
+    // process login
     public function post_login()
     {
         $f = new Form($_POST);
-        $f->setError('email', "I don't like your face");
-        return $this->renderFormResponse('login', $f);
+        $u = new \DAL\UserMapper();
+
+        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            $f->setError('email', 'Invalid email address');
+        }
+        if (mb_strlen($_POST['password']) < 8) {
+            $f->setError('password', 'Password must be at least 8 characters');
+        }
+        if (!$f->hasErrors()) {
+            $user = $u->find($_POST['email'], 'email');
+            \Context::debug(var_export($user, true));
+            if (!$user) {
+                $f->setError('email', 'Email address not found');
+            } else {
+                if (!password_verify($_POST['password'], $user['passwd'])) {
+                    $f->setError('password', 'Invalid password');
+                }
+            }
+        }
+        if ($f->hasErrors()) {
+            return $this->renderFormResponse('login', $f);
+        }
+        $_SESSION['user'] = $user['id'];
+        return $this->response->redirect('/account');
+    }
+
+    // logout
+    public function get_logout()
+    {
+        unset($_SESSION['user']);
+        return $this->response->redirect('/');
     }
 }

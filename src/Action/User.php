@@ -50,5 +50,6 @@ class User extends BaseAction
     {
         $u = new UserMapper();
         $u->find($_SESSION['user']);
+        return $this->response;
     }
 }

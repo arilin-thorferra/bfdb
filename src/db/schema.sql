@@ -90,9 +90,9 @@ CREATE TABLE links (
   kind_id       TEXT NOT NULL,
   content       TEXT NOT NULL,
   CONSTRAINT fk_link_char FOREIGN KEY (char_id)
-    REFERENCES characters(id) ON DELETE CASCADE,
-  CONSTRAINT fk_link_kind FOREIGN KEY (kind_id)
-    REFERENCES link_kinds(id)
+    REFERENCES characters(id) ON DELETE CASCADE
+  -- CONSTRAINT fk_link_kind FOREIGN KEY (kind_id)
+  --   REFERENCES link_kinds(id)
 );
 CREATE INDEX kind_char_id ON links (char_id);
 
