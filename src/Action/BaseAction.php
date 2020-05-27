@@ -14,6 +14,9 @@ abstract class BaseAction
     protected $request;
     protected $response;
 
+    const ALLOW = [];
+    const DENY = [];
+
     /**
      * Action constructor
      * 
@@ -68,5 +71,33 @@ abstract class BaseAction
         }
         $args = $args + [$formvar => $f];
         return $this->renderResponse($file, $args);
+    }
+
+    /**
+     * Check if access to an action is allowed. This method is called after
+     * the route has been resolved but before the action method is called,
+     * and returns TRUE if the user should be allowed to take the action.
+     * The BaseAction implementation checks the method against a list of
+     * methods allowed to logged-in users or a list of methods denied to them,
+     * with the allow list taking precedence if both are defined. This method
+     * could be extended in a child Action class to perform other checks,
+     * like an administration role.
+     *
+     * @param string $method
+     * @return boolean
+     */
+    public function denyAccess(string $method) : bool
+    {
+        if (!empty($this::ALLOW)) {
+            if (!in_array($method, $this::ALLOW) && !isset($_SESSION['user'])) {
+                return true;
+            }
+        }
+        if (!empty($this::DENY)) {
+            if (in_array($method, $this::DENY) && !isset($_SESSION['user'])) {
+                return true;
+            }
+        }
+        return false;
     }
 }
