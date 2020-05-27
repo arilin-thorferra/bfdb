@@ -115,7 +115,7 @@ class Response
     }
 
     /**
-     * Set the status code of the response. By default this clears the
+     * Set the status code of the response. By default this replaces the
      * existing body; pass FALSE as the second parameter to prevent this.
      *
      * @param integer $code
@@ -126,9 +126,14 @@ class Response
     {
         $this->status_code = $code;
         if ($clear && $code != 204) {
-            $reason = self::REASON[$code];
-            // TODO check for existence of error templates to use instead
-            $this->body = "<html><style>.debuginfo{whitespace-pre;font-family:monospace;color:#900;margin-top:2em}</style></head><body><h1>$code $reason</h1></body></html>";
+            $t = new \Template();
+            if (file_exists(BASE_DIR . "templates/_$code.phtml")) {
+                $template = $t->render("_$code");
+            } else {
+                $reason = self::REASON[$code];
+                $template = $t->render('_error', compact('reason', 'code'));
+            }
+            $this->body = $template;
         }
         return $this;
     }
