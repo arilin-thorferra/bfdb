@@ -8,7 +8,6 @@ use Http\Request;
 use Http\Response;
 use ReflectionClass;
 use ReflectionMethod;
-use RuntimeException;
 
 /**
  * Route handler class

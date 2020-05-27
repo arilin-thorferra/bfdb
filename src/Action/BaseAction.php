@@ -74,30 +74,35 @@ abstract class BaseAction
     }
 
     /**
-     * Check if access to an action is allowed. This method is called after
-     * the route has been resolved but before the action method is called,
-     * and returns TRUE if the user should be allowed to take the action.
-     * The BaseAction implementation checks the method against a list of
-     * methods allowed to logged-in users or a list of methods denied to them,
-     * with the allow list taking precedence if both are defined. This method
+     * Authorize access to an action
+     * 
+     * This method is called before all action methods, and must return
+     * TRUE for the user to be allowed to take the action. The default
+     * implementation checks the method name against ALLOW or DENY constants
+     * that whitelist or blacklist actions in that class for users who are
+     * not logged in: ALLOW lists methods they are allowed to use; DENY lists
+     * methods they are not. The two lists are mutually exclusive. Any action
+     * in the class that is not in the provided list is blocked or granted.
+     * 
+     * This method can be overridden in child classes to perform other checks
      * could be extended in a child Action class to perform other checks,
-     * like an administration role.
+     * like administration roles.
      *
      * @param string $method
      * @return boolean
      */
-    public function denyAccess(string $method) : bool
+    public function grantAccess(string $method) : bool
     {
         if (!empty($this::ALLOW)) {
             if (!in_array($method, $this::ALLOW) && !isset($_SESSION['user'])) {
-                return true;
+                return false;
             }
         }
         if (!empty($this::DENY)) {
             if (in_array($method, $this::DENY) && !isset($_SESSION['user'])) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 }
