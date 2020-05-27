@@ -11,7 +11,7 @@ class Session extends BaseAction {
     // login form
     public function get_login()
     {
-        if ($_SESSION['user']) {
+        if (isset($_SESSION['user'])) {
             return $this->response->setStatus(418);
         }
         return $this->renderFormResponse('login', new Form());
