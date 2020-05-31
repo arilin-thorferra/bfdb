@@ -25,7 +25,7 @@ class Template
      * @param array $_args
      * @return string
      */
-    public function render(string $_template, array $_args=[]) : string
+    public function render(string $_template, array $_args = []): string
     {
         if (strpos($_template, '.') === false) {
             $_template .= '.phtml';
@@ -52,7 +52,7 @@ class Template
      * @param array $_args
      * @return string
      */
-    public function partial(string $_partial, array $_args=[]) : void
+    public function partial(string $_partial, array $_args = []): void
     {
         $_file = BASE_DIR . "templates/partials/$_partial.phtml";
         echo $this->getContent($_file, $_args);
@@ -66,7 +66,7 @@ class Template
      * @param array $_args
      * @return string
      */
-    private function getContent(string $_file, array $_args=[]) : string
+    private function getContent(string $_file, array $_args = []): string
     {
         if (!file_exists($_file)) {
             $error = "Template '$_file' not found";
@@ -88,7 +88,7 @@ class Template
      * @param string $text
      * @return string
      */
-    protected function e(string $text) : string
+    protected function e(string $text): string
     {
         $text = mb_convert_encoding($text, 'UTF-8', 'UTF-8');
         return htmlspecialchars($text, self::ESCAPE_FLAGS, 'UTF-8');
@@ -101,7 +101,7 @@ class Template
      * @param array $args
      * @return void
      */
-    protected function layout(string $layout, array $args=[]) : void
+    protected function layout(string $layout, array $args = []): void
     {
         $this->layout = $layout;
         $this->layout_args = $args;
@@ -112,7 +112,7 @@ class Template
      *
      * @return void
      */
-    protected function resetLayout() : void
+    protected function resetLayout(): void
     {
         $this->layout = '';
         $this->layout_args = [];

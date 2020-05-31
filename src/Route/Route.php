@@ -12,7 +12,7 @@ class Route
     private $class = '';
     private $method = '';
     private $args = [];
- 
+
     /**
      * Constructor
      *
@@ -21,13 +21,15 @@ class Route
      * @param array $args
      */
     public function __construct(
-        string $class='', string $method='', array $args=[]
+        string $class = '',
+        string $method = '',
+        array $args = []
     ) {
         if ($class) {
             $this->set($class, $method, $args);
         }
     }
-    
+
     /**
      * Set the route
      *
@@ -36,7 +38,7 @@ class Route
      * @param array $args
      * @return void
      */
-    public function set(string $class, string $method, array $args=[])
+    public function set(string $class, string $method, array $args = [])
     {
         $this->class = $class;
         $this->method = $method;
@@ -48,37 +50,37 @@ class Route
      *
      * @return boolean
      */
-    public function isSet() : bool
+    public function isSet(): bool
     {
         return $this->class ? true : false;
     }
-    
+
     /**
      * Get the route's class
      *
      * @return string
      */
-    public function getClass() : string
+    public function getClass(): string
     {
         return $this->class;
     }
-    
+
     /**
      * Get the route's method
      *
      * @return string
      */
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return $this->method;
     }
-    
+
     /**
      * Get the route's arguments
      *
      * @return array
      */
-    public function getArgs() : array
+    public function getArgs(): array
     {
         return $this->args;
     }

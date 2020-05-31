@@ -47,7 +47,9 @@ class Response
      * @param array $headers
      */
     public function __construct(
-        int $code=200, string $body='', array $headers=[]
+        int $code = 200,
+        string $body = '',
+        array $headers = []
     ) {
         $this->body = $body;
         $this->headers = $headers;
@@ -61,7 +63,7 @@ class Response
      * @param string $value
      * @return Response
      */
-    public function setHeader(string $header, string $value) : Response
+    public function setHeader(string $header, string $value): Response
     {
         $this->headers[$header] = $value;
         return $this;
@@ -72,7 +74,7 @@ class Response
      *
      * @return array
      */
-    public function getHeaders() : array
+    public function getHeaders(): array
     {
         return $this->headers;
     }
@@ -83,7 +85,7 @@ class Response
      * @param string $body
      * @return Response
      */
-    public function setBody(string $body) : Response
+    public function setBody(string $body): Response
     {
         $this->body = $body;
         return $this;
@@ -98,7 +100,7 @@ class Response
      * @param string $delimiter
      * @return Response
      */
-    public function addToBody(string $body_part, string $delimiter="\n") : Response
+    public function addToBody(string $body_part, string $delimiter = "\n"): Response
     {
         $this->body = $this->body . $delimiter . $body_part;
         return $this;
@@ -109,7 +111,7 @@ class Response
      *
      * @return string
      */
-    public function getBody() : string
+    public function getBody(): string
     {
         return $this->body;
     }
@@ -122,7 +124,7 @@ class Response
      * @param bool $clear
      * @return Response
      */
-    public function setStatus(int $code, bool $clear=true) : Response
+    public function setStatus(int $code, bool $clear = true): Response
     {
         $this->status_code = $code;
         if ($clear && $code != 204) {
@@ -143,12 +145,12 @@ class Response
      *
      * @return int
      */
-    public function getStatus() : int
+    public function getStatus(): int
     {
         return $this->status_code;
     }
 
-    public function redirect($url, int $type=303) : Response
+    public function redirect($url, int $type = 303): Response
     {
         $this->setStatus($type);
         $this->setHeader('Location', $url);

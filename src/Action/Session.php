@@ -6,7 +6,8 @@ namespace Action;
 
 use Form;
 
-class Session extends BaseAction {
+class Session extends BaseAction
+{
 
     // login form
     public function get_login()

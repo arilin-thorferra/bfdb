@@ -10,22 +10,21 @@
  */
 
 return [
-    '/'                     => ['Index', 'index'],
-    '/about'                => ['Index', 'about'],
+    '/'                => ['Index', 'index'],
+    '/about'           => ['Index', 'about'],
 
-    '/login'                => ['Session', 'login'],
-    '/logout'               => ['Session', 'logout'],
+    '/login'           => ['Session', 'login'],
+    '/logout'          => ['Session', 'logout'],
 
-    '/register'             => ['User', 'create'],
-    '/account'              => ['User', 'show'],
-    '/account/edit'         => ['User', 'edit'],
-    '/account/delete'       => ['User', 'delete'],
+    '/register'        => ['User', 'create'],
+    '/account'         => ['User', 'show'],
+    '/account/edit'    => ['User', 'edit'],
+    '/account/delete'  => ['User', 'delete'],
 
-    '/c/find'               => ['Character', 'search'],
-    '/c/list'               => ['Character', 'list'],
-    '/c/new/'               => ['Character', 'create'],
-    '/c/show/(.+)'          => ['Character', 'show'],
-    '/c/edit/(.+)'          => ['Character', 'edit'],
-    '/c/delete/(.+)'        => ['Character', 'delete']
+    '/c/find'          => ['Character', 'search'],
+    '/c/list'          => ['Character', 'list'],
+    '/c/new/'          => ['Character', 'create'],
+    '/c/show/(.+)'     => ['Character', 'show'],
+    '/c/edit/(.+)'     => ['Character', 'edit'],
+    '/c/delete/(.+)'   => ['Character', 'delete']
 ];
- 

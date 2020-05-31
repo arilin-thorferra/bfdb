@@ -10,11 +10,11 @@ class Form
     protected $values;
     protected $url;
     protected $errors = [];
-    
+
     /**
      * Constructor
      */
-    public function __construct(array $values=[], string $url='')
+    public function __construct(array $values = [], string $url = '')
     {
         $this->values = $values;
         $this->url = $url;
@@ -33,9 +33,11 @@ class Form
      * @return string
      */
     protected function maketag(
-        string $tag, array $attrs=[], string $key='', string $body=''
-    ) : string
-    {
+        string $tag,
+        array $attrs = [],
+        string $key = '',
+        string $body = ''
+    ): string {
         $has_error = key_exists($key, $this->errors);
         if ($has_error) {
             if (key_exists('class', $attrs)) {
@@ -71,11 +73,11 @@ class Form
      * @param array $attrs
      * @return void
      */
-    public function start(array $attrs=[]) : string
+    public function start(array $attrs = []): string
     {
         $attrs = ['method' => 'post'] + $attrs;
         if ($this->url) {
-            $attrs = $attrs + [ 'action' => $this->url];
+            $attrs = $attrs + ['action' => $this->url];
         }
         return $this->maketag('form', $attrs) .
             "<input type=\"hidden\" name=\"_tok\" value=\"{$_SESSION['token']}\">";
@@ -89,7 +91,7 @@ class Form
      * @param array $attrs
      * @return string
      */
-    public function input(string $type, string $name, array $attrs=[]) : string
+    public function input(string $type, string $name, array $attrs = []): string
     {
         $tag = 'input';
         $attrs = compact('type', 'name') + $attrs;
@@ -103,7 +105,7 @@ class Form
      * @param array $attrs
      * @return string
      */
-    public function text(string $name, array $attrs=[]) : string
+    public function text(string $name, array $attrs = []): string
     {
         return $this->input('text', $name, $attrs);
     }
@@ -115,11 +117,11 @@ class Form
      * @param array $attrs
      * @return string
      */
-    public function email(string $name, array $attrs=[]) : string
+    public function email(string $name, array $attrs = []): string
     {
         return $this->input('email', $name, $attrs);
     }
-    
+
     /**
      * Shorthand for a password input tag. This should be used in preference
      * to input(), as it will blank out any password values if the form is
@@ -129,7 +131,7 @@ class Form
      * @param array $attrs
      * @return string
      */
-    public function password(string $name, array $attrs=[]) : string
+    public function password(string $name, array $attrs = []): string
     {
         if (key_exists($name, $this->values)) {
             unset($this->values[$name]);
@@ -145,7 +147,7 @@ class Form
      * @param array $attrs
      * @return string
      */
-    public function select(string $name, array $options, array $attrs=[]) : string
+    public function select(string $name, array $options, array $attrs = []): string
     {
         $body = '';
         foreach ($options as $value => $body) {
@@ -165,7 +167,7 @@ class Form
      * @param array $attrs
      * @return string
      */
-    public function textarea(string $name, array $attrs=[]) : string
+    public function textarea(string $name, array $attrs = []): string
     {
         $body = (key_exists($name, $this->values)) ? $this->values[$name] : '';
         return $this->maketag('textarea', $attrs, '', $body);
@@ -179,9 +181,9 @@ class Form
      * @param array $attrs
      * @return string
      */
-    public function label(string $text, string $for, array $attrs=[]) : string
+    public function label(string $text, string $for, array $attrs = []): string
     {
-        $attrs = $attrs + [ 'for' => $for ];
+        $attrs = $attrs + ['for' => $for];
         return $this->maketag('label', $attrs, '', $text);
     }
 
@@ -192,7 +194,7 @@ class Form
      * @param array $attrs
      * @return string
      */
-    public function submit(string $value="Submit", array $attrs=[]) : string
+    public function submit(string $value = "Submit", array $attrs = []): string
     {
         $attrs = ['type' => 'submit', 'value' => $value] + $attrs;
         $tag = 'input';
@@ -204,17 +206,17 @@ class Form
      *
      * @return string
      */
-    public function end() : string
+    public function end(): string
     {
         return "</form>";
     }
-    
-    public function setError(string $error, string $msg) : void
+
+    public function setError(string $error, string $msg): void
     {
         $this->errors[$error] = $msg;
     }
 
-    public function hasErrors() : bool
+    public function hasErrors(): bool
     {
         return !empty($this->errors);
     }
@@ -224,7 +226,7 @@ class Form
      *
      * @return boolean
      */
-    public function validateToken() : bool
+    public function validateToken(): bool
     {
         if (!key_exists('_tok', $this->values)) {
             return true;

@@ -18,7 +18,8 @@ class Request
      * Constructor
      */
     public function __construct(
-        $url='', $method=''
+        $url = '',
+        $method = ''
     ) {
         $this->url = parse_url($url);
         if ($this->url === false) {
@@ -35,7 +36,7 @@ class Request
      * @param string $key
      * @return mixed
      */
-    public function getUrl(string $key='')
+    public function getUrl(string $key = '')
     {
         if ($key) {
             return $this->url[$key];
@@ -52,7 +53,7 @@ class Request
      * @param string $key
      * @return mixed
      */
-    public function getQuery(string $key='')
+    public function getQuery(string $key = '')
     {
         parse_str($this->url['query'], $query);
         if ($key) {
@@ -66,7 +67,7 @@ class Request
      *
      * @return string
      */
-    public function getPath() : string
+    public function getPath(): string
     {
         return urldecode($this->url['path']);
     }
@@ -76,7 +77,7 @@ class Request
      *
      * @return string
      */
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return $this->method;
     }

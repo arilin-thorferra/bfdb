@@ -16,8 +16,8 @@ class User extends BaseAction
     public function get_create()
     {
         return $this->renderFormResponse('create', new Form());
-    }                
-    
+    }
+
     // POST action for creating new users
     public function post_create()
     {

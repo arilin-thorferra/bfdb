@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Action;
 
-class Index extends BaseAction {
+class Index extends BaseAction
+{
 
     public function get_index()
     {

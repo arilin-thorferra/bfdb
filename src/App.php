@@ -17,7 +17,7 @@ class App
      *
      * @return void
      */
-    public function run() : void
+    public function run(): void
     {
         // initialize session
         session_name(Settings::get('session'));
@@ -27,7 +27,8 @@ class App
         }
         // instantiate request
         $request = new \Http\Request(
-            $_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']
+            $_SERVER['REQUEST_URI'],
+            $_SERVER['REQUEST_METHOD']
         );
         // load and process routes
         $routes = require_once BASE_DIR . 'config/routes.php';
@@ -57,15 +58,15 @@ class App
      * @param Route $route
      * @return string
      */
-    private function debugInfo(Request $request, Route $route) : string
+    private function debugInfo(Request $request, Route $route): string
     {
         $info = "<p class='debuginfo'>" .
             'Request path: ' . $request->getPath() .
             '<br>Request method: ' . $request->getMethod();
         if ($route->isSet()) {
             $info .= '<br>Resolved Route: ' . $route->getClass() . '::' . $route->getMethod() .
-            '<br>Route arguments: ' .
-            var_export($route->getArgs(), true);
+                '<br>Route arguments: ' .
+                var_export($route->getArgs(), true);
         }
         if (Context::has('debugmsg')) {
             $info .= '<br><br>' . Context::get('debugmsg');

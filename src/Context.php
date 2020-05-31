@@ -39,7 +39,7 @@ class Context
      * @param [type] $val
      * @return void
      */
-    public static function set(string $key, $val) : void
+    public static function set(string $key, $val): void
     {
         self::$context[$key] = $val;
     }
@@ -50,12 +50,12 @@ class Context
      * @param string $key
      * @return boolean
      */
-    public static function has(string $key) : bool
+    public static function has(string $key): bool
     {
         return array_key_exists($key, self::$context);
     }
 
-    public static function add(string $key, string $val, string $delimiter="\n") : void
+    public static function add(string $key, string $val, string $delimiter = "\n"): void
     {
         if (self::has($key)) {
             self::$context[$key] .= $delimiter . $val;

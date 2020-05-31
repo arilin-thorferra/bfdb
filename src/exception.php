@@ -1,5 +1,7 @@
 <?php
-function handler($e) {
+
+function handler($e)
+{
     // TODO handle this differently if not in debug mode!
     Context::debug($e->getMessage());
     Context::debug($e->getTraceAsString());

@@ -42,30 +42,32 @@ abstract class BaseAction
      * @param array $args
      * @return Http\Response
      */
-    protected function renderResponse(string $file, array $args=[]) : Response
+    protected function renderResponse(string $file, array $args = []): Response
     {
         $template = new \Template();
         $class = explode('\\', static::class);
         $file = end($class) . '/' . $file;
         return $this->response->setBody($template->render($file, $args));
     }
-    
+
     /**
-    * Render a template with a form to the response
-    * 
-    * This is another convenience action that verifies an already-submitted
-    * form has a valid CSRF token, then adds the form to the argument list
-    * before calling renderResponse.
-    *
-    * @param string $file
-    * @param array $args
-    * @param string $formvar
-    * @return Http\Response
-    */
+     * Render a template with a form to the response
+     * 
+     * This is another convenience action that verifies an already-submitted
+     * form has a valid CSRF token, then adds the form to the argument list
+     * before calling renderResponse.
+     *
+     * @param string $file
+     * @param array $args
+     * @param string $formvar
+     * @return Http\Response
+     */
     protected function renderFormResponse(
-        string $file, \Form $f, array $args=[], $formvar='f'
-    ) : Response
-    {
+        string $file,
+        \Form $f,
+        array $args = [],
+        $formvar = 'f'
+    ): Response {
         if ($f->validateToken() == false) {
             return $this->response->setStatus(403);
         }
@@ -91,7 +93,7 @@ abstract class BaseAction
      * @param string $method
      * @return boolean
      */
-    public function grantAccess(string $method) : bool
+    public function grantAccess(string $method): bool
     {
         if (!empty($this::ALLOW)) {
             if (!in_array($method, $this::ALLOW) && !isset($_SESSION['user'])) {

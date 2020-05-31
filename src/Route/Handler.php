@@ -38,7 +38,7 @@ class Handler
      * @param Request $request
      * @return Route
      */
-    public function findRoute(Request $request) : Route
+    public function findRoute(Request $request): Route
     {
         $path = $request->getPath();
         $found = new Route();
@@ -79,7 +79,7 @@ class Handler
      * @param Route $route
      * @return Response
      */
-    public function execute(Request $request, Route $route) : Response
+    public function execute(Request $request, Route $route): Response
     {
         if (!$route->isSet()) {
             $error = "No route for '{$request->getPath()}'";
@@ -130,7 +130,7 @@ class Handler
      * @param string $class
      * @return string
      */
-    private function findAllowedMethods(string $method, string $class) : string
+    private function findAllowedMethods(string $method, string $class): string
     {
         $action = new ReflectionClass($class);
         $methods = $action->getMethods(ReflectionMethod::IS_PUBLIC);
