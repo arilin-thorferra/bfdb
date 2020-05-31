@@ -49,7 +49,7 @@ class User extends BaseAction
     public function get_show()
     {
         $u = new UserMapper();
-        $u->find($_SESSION['user']);
-        return $this->response;
+        $user = $u->find($_SESSION['user']);
+        return $this->renderResponse('show', ['user' => $user]);
     }
 }
