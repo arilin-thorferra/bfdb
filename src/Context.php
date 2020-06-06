@@ -55,8 +55,19 @@ class Context
         return array_key_exists($key, self::$context);
     }
 
-    public static function add(string $key, string $val, string $delimiter = "\n"): void
-    {
+    /**
+     * Append a string value to a key in context storage
+     *
+     * @param string $key
+     * @param string $val
+     * @param string $delimiter
+     * @return void
+     */
+    public static function add(
+        string $key,
+        string $val,
+        string $delimiter = "\n"
+    ): void {
         if (self::has($key)) {
             self::$context[$key] .= $delimiter . $val;
         } else {
@@ -64,13 +75,25 @@ class Context
         }
     }
 
-    public static function debug($message)
+    /**
+     * Add a debugging message to context storage
+     * 
+     * If debug mode is set, the string will be added and displayed as part
+     * of the request output
+     *
+     * @param string $message
+     * @return void
+     */
+    public static function debug(string $message): void
     {
         if (\Settings::get('debug')) {
             self::add('debugmsg', htmlspecialchars($message));
         }
     }
 
+    /**
+     * Get the data access layer adapter, instantiating it if necessary
+     */
     public static function getDba()
     {
         if (!self::$dba) {

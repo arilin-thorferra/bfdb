@@ -150,7 +150,14 @@ class Response
         return $this->status_code;
     }
 
-    public function redirect($url, int $type = 303): Response
+    /**
+     * Return a redirection response
+     *
+     * @param string $url
+     * @param int $type
+     * @return Response
+     */
+    public function redirect(string $url, int $type = 303): Response
     {
         $this->setStatus($type);
         $this->setHeader('Location', $url);
