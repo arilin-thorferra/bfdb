@@ -80,14 +80,12 @@ abstract class BaseAction
      * 
      * This method is called before all action methods, and must return
      * TRUE for the user to be allowed to take the action. The default
-     * implementation checks the method name against ALLOW or DENY constants
-     * that whitelist or blacklist actions in that class for users who are
-     * not logged in: ALLOW lists methods they are allowed to use; DENY lists
-     * methods they are not. The two lists are mutually exclusive. Any action
-     * in the class that is not in the provided list is blocked or granted.
+     * implementation lets action classes specify either a list of methods
+     * that users who are not logged in are allowed to access, denying access
+     * to others in the class (the ALLOW array), or the reverse (the DENY
+     * array).
      * 
      * This method can be overridden in child classes to perform other checks
-     * could be extended in a child Action class to perform other checks,
      * like administration roles.
      *
      * @param string $method
