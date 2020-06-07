@@ -31,7 +31,7 @@ class App
             $_SERVER['REQUEST_METHOD']
         );
         // load and process routes
-        $routes = require_once BASE_DIR . 'config/routes.php';
+        $routes = Settings::routes();
         $handler = new \Route\Handler($routes);
         $route = $handler->findRoute($request);
         // execute request

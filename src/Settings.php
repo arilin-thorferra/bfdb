@@ -18,6 +18,13 @@ class Settings
     private static $settings = null;
 
     /**
+     * Routes variable storage
+     *
+     * @var array|null
+     */
+    private static $routes = null;
+
+    /**
      * Return a settings value
      *
      * @param string $key
@@ -32,5 +39,18 @@ class Settings
             return self::$settings[$key];
         }
         throw new OutOfBoundsException("Settings key '$key' not set");
+    }
+
+    /**
+     * Return the route array
+     *
+     * @return array
+     */
+    public static function routes(): array
+    {
+        if (is_null(self::$routes)) {
+            self::$routes = require BASE_DIR . 'config/routes.php';
+        }
+        return self::$routes;
     }
 }

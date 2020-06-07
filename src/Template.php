@@ -95,6 +95,20 @@ class Template
     }
 
     /**
+     * Return the URL for a route
+     *
+     * @param string $route
+     * @param array $args
+     * @return string
+     */
+    protected function link(string $route, array $args = []): string
+    {
+        $routes = Settings::routes();
+        $handler = new \Route\Handler($routes);
+        return $handler->findUrl($route, $args);
+    }
+
+    /**
      * Set the layout and arguments for the next rendering
      *
      * @param string $layout

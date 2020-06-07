@@ -8,6 +8,7 @@ use Http\Request;
 use Http\Response;
 use ReflectionClass;
 use ReflectionMethod;
+use RuntimeException;
 
 /**
  * Route handler class
@@ -115,6 +116,38 @@ class Handler
             $response = $this->execute($request, $response);
         }
         return $response;
+    }
+
+    /**
+     * Find URL given an action/method array (reverse route)
+     *
+     * @param string $action
+     * @param array $args
+     * @return string
+     */
+    public function findUrl(string $action, array $args = []): string
+    {
+        [$class, $method] = explode('/', $action);
+        $url = '';
+        foreach ($this->routes as $route => $view) {
+            if ($view[0] != $class || $view[1] != $method) {
+                continue;
+            }
+            $pos = strpos($route, '(');
+            if ($pos === false) {
+                $url = $route;
+                break;
+            }
+            $url = substr($route, 0, $pos);
+            foreach ($args as $arg) {
+                $url .= "/$arg";
+            }
+            break;
+        }
+        if (!$url) {
+            throw new RuntimeException("URL for '$class/$method' could not be determined");
+        }
+        return $url;
     }
 
     /**
