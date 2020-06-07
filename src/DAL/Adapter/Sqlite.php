@@ -10,13 +10,8 @@ use Settings;
 /**
  * Database Adapter for SQLite 3
  */
-class Sqlite
+class Sqlite extends BaseAdapter
 {
-    /**
-     * PDO storage
-     */
-    private $pdo;
-
     /**
      * Constructor. Instantiates a PDO based on the DSN provided in settings,
      * sets the default fetch mode, and turns on SQLite's foreign keys.
@@ -34,16 +29,6 @@ class Sqlite
         );
         $this->pdo = $pdo;
         $this->pdo->exec('PRAGMA foreign_keys = on;');
-    }
-
-    /**
-     * Return the PDO
-     *
-     * @return PDO
-     */
-    public function getPdo(): PDO
-    {
-        return $this->pdo;
     }
 
     /**

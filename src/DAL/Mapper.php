@@ -33,7 +33,7 @@ abstract class Mapper
      * @param string $query
      * @return \PDOStatement
      */
-    protected function do(string $query) : \PDOStatement
+    protected function do(string $query): \PDOStatement
     {
         $dba = Context::getDba();
         $pdo = $dba->getPdo();
@@ -47,10 +47,10 @@ abstract class Mapper
      * @param array $params
      * @return bool
      */
-    public function exec(string $query, $params=[]) : bool
+    public function exec(string $query, $params = []): bool
     {
         $stmt = $this->do($query);
-        return $stmt->execute((array)$params);
+        return $stmt->execute((array) $params);
     }
 
     /**
@@ -60,13 +60,13 @@ abstract class Mapper
      * @param mixed $params
      * @return PDOStatement
      */
-    public function query(string $query, $params=[]) : \PDOStatement
+    public function query(string $query, $params = []): \PDOStatement
     {
         $stmt = $this->do($query);
-        $stmt->execute((array)$params);
+        $stmt->execute((array) $params);
         return $stmt;
     }
-    
+
     /**
      * Read a single record. Returns an associative array, or FALSE
      * on failure.
@@ -75,7 +75,7 @@ abstract class Mapper
      * @param array $params
      * @return mixed
      */
-    public function read(string $query, $params=[])
+    public function read(string $query, $params = [])
     {
         $stmt = $this->query($query, $params);
         return $stmt->fetch();
@@ -89,14 +89,14 @@ abstract class Mapper
      * @param array $params
      * @return array
      */
-    public function readSet(string $query, $params=[]) : array
+    public function readSet(string $query, $params = []): array
     {
         $stmt = $this->query($query, $params);
         return $stmt->fetchAll();
     }
 
     /**
-     * Return the last inserted ID. This value is usually an interger, but
+     * Return the last inserted ID. This value is usually an integer, but
      * this is column/database dependent.
      *
      * @return mixed
@@ -154,7 +154,7 @@ abstract class Mapper
      * @param string $key
      * @return boolean
      */
-    public function update($row, array $data, string $key='id') : bool
+    public function update($row, array $data, string $key = 'id'): bool
     {
         $this->checkTable('update');
         $cols = [];
@@ -185,7 +185,7 @@ abstract class Mapper
      * @param string $key
      * @return mixed
      */
-    public function find($param, string $key='id')
+    public function find($param, string $key = 'id')
     {
         $this->checkTable('find');
         $query = 'SELECT * FROM ' . $this::TABLE . " WHERE $key = ?";
@@ -206,7 +206,7 @@ abstract class Mapper
      * @param mixed $param
      * @return array
      */
-    public function findSet(string $where, $param) : array
+    public function findSet(string $where, $param): array
     {
         $this->checkTable('findSet');
         if (strpos($where, ' ') === false) {
@@ -227,7 +227,7 @@ abstract class Mapper
      * @param string $col
      * @return int
      */
-    public function count(string $where='', $param='', string $col='*')
+    public function count(string $where = '', $param = '', string $col = '*')
     {
         $this->checkTable('count');
         $query = "SELECT COUNT($col) FROM " . $this::TABLE;
