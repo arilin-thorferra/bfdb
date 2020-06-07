@@ -21,10 +21,10 @@ return [
     '/account/edit'    => ['User', 'edit'],
     '/account/delete'  => ['User', 'delete'],
 
-    '/c/find'          => ['Character', 'search'],
-    '/c/list'          => ['Character', 'list'],
-    '/c/new/'          => ['Character', 'create'],
-    '/c/show/(.+)'     => ['Character', 'show'],
-    '/c/edit/(.+)'     => ['Character', 'edit'],
-    '/c/delete/(.+)'   => ['Character', 'delete']
+    '/search'          => ['Character', 'search'],
+    '/browse'          => ['Character', 'browse'],
+    '/create'          => ['Character', 'create'],
+    '/show/(.+)'       => ['Character', 'show'],
+    '/edit/(.+)'       => ['Character', 'edit'],
+    '/delete/(.+)'     => ['Character', 'delete']
 ];
