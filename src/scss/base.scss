@@ -1,0 +1,30 @@
+body {
+  font-family: $font-stack-system;
+  font-size: 118.75%;
+  margin: 3em;
+  line-height: 1.4;
+}
+
+nav {
+  display: grid;
+  grid-auto-flow: column;
+  ul {
+    padding: 0;
+    li {
+      list-style: none;
+      display: inline;
+    }
+  }
+  ul.left {
+    justify-self: start;
+    li {
+      padding-right: 0.5rem;
+    }
+  }
+  ul.right {
+    justify-self: end;
+    li {
+      padding-left: 0.5rem;
+    }
+  }
+}
