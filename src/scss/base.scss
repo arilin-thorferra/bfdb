@@ -1,3 +1,8 @@
+$bourbon: (
+  "modular-scale-ratio": $major-third,
+  "modular-scale-base": 1rem
+);
+
 body {
   font-family: $font-stack-system;
   font-size: 118.75%;
@@ -5,9 +10,37 @@ body {
   line-height: 1.4;
 }
 
+p {
+  margin: modular-scale(0) 0;
+}
+
+h1 {
+  font-size: modular-scale(4);
+  margin-bottom: modular-scale(0);
+}
+
+h2 {
+  font-size: modular-scale(3);
+}
+
+h3 {
+  font-size: modular-scale(2);
+}
+
+
 nav {
   display: grid;
   grid-auto-flow: column;
+  margin-bottom: modular-scale(2);
+  a:link, a:visited {
+    text-decoration: none;
+    color: #00C;
+    padding: 1px 2px;
+    border-radius: 0.25em;
+  }
+  a:hover {
+    background-color: lighten(#00C, 50%);
+  }
   ul {
     padding: 0;
     li {
@@ -18,13 +51,13 @@ nav {
   ul.left {
     justify-self: start;
     li {
-      padding-right: 0.5rem;
+      padding-right: 0.3rem;
     }
   }
   ul.right {
     justify-self: end;
     li {
-      padding-left: 0.5rem;
+      padding-left: 0.3rem;
     }
   }
 }

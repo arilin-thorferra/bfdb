@@ -1,10 +1,10 @@
 .debuginfo {
   white-space: pre;
   font-family: $font-stack-monaco;
-  font-size: 0.75rem;
-  margin-top: 2rem;
-  padding: 0.75rem 1rem;
+  font-size: modular-scale(-1);
+  margin-top: modular-scale(3);
+  padding: modular-scale(-1) modular-scale(0);
   background-color: #eef;
-  border: 2px solid #99f;
-  border-radius: 0.5rem;
+  border: 1px solid #99f;
+  border-radius: 0.3333rem;
 }

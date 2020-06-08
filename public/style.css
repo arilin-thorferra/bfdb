@@ -26,9 +26,36 @@ body {
   line-height: 1.4;
 }
 
+p {
+  margin: 1rem 0;
+}
+
+h1 {
+  font-size: 2.44140625rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.953125rem;
+}
+
+h3 {
+  font-size: 1.5625rem;
+}
+
 nav {
   display: grid;
   grid-auto-flow: column;
+  margin-bottom: 1.5625rem;
+}
+nav a:link, nav a:visited {
+  text-decoration: none;
+  color: #00C;
+  padding: 1px 2px;
+  border-radius: 0.25em;
+}
+nav a:hover {
+  background-color: #ccccff;
 }
 nav ul {
   padding: 0;
@@ -41,22 +68,22 @@ nav ul.left {
   justify-self: start;
 }
 nav ul.left li {
-  padding-right: 0.5rem;
+  padding-right: 0.3rem;
 }
 nav ul.right {
   justify-self: end;
 }
 nav ul.right li {
-  padding-left: 0.5rem;
+  padding-left: 0.3rem;
 }
 
 .debuginfo {
   white-space: pre;
   font-family: "Monaco", "Consolas", "Lucida Console", monospace;
-  font-size: 0.75rem;
-  margin-top: 2rem;
-  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  margin-top: 1.953125rem;
+  padding: 0.8rem 1rem;
   background-color: #eef;
-  border: 2px solid #99f;
-  border-radius: 0.5rem;
+  border: 1px solid #99f;
+  border-radius: 0.3333rem;
 }
