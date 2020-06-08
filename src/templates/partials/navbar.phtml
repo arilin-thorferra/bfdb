@@ -1,29 +1,57 @@
 <nav>
   <ul class="left">
     <li>
-      <?php if ($active == "h"): ?><b>Home</b><?php else: ?><a href="/">Home</a><?php endif ?>
+      <?php if ($active == "h"): ?>
+        <b>Home</b>
+      <?php else: ?>
+        <a href="/">Home</a>
+      <?php endif ?>
     </li>
     <li>
-      <?php if ($active == "b"): ?><b>Browse</b><?php else: ?><a href="/browse">Browse</a><?php endif ?>
+      <?php if ($active == "b"): ?>
+        <b>Browse</b>
+      <?php else: ?>
+        <a href="/browse">Browse</a>
+      <?php endif ?>
     </li>
     <li>
-      <?php if ($active == "s"): ?><b>Search</b><?php else: ?><a href="/search">Search</a><?php endif ?>
+      <?php if ($active == "s"): ?>
+        <b>Search</b>
+      <?php else: ?>
+        <a href="/search">Search</a>
+      <?php endif ?>
     </li>
   </ul>
   <ul class="right">
     <?php if (@$_SESSION['user']): ?>
       <li>
-        <?php if ($active == "a"): ?>Account<?php else: ?><a href="/account">Account</a><?php endif ?>
+        <?php if ($active == "a"): ?>
+          <b>Account</b>
+        <?php else: ?>
+          <a href="/account">Account</a>
+        <?php endif ?>
       </li>
       <li>
-        <?php if ($active == "lo"): ?><b>Sign Out</b><?php else: ?><a href="/logout">Sign Out</a><?php endif ?>
+        <?php if ($active == "lo"): ?>
+          <b>Sign Out</b>
+        <?php else: ?>
+          <a href="/logout">Sign Out</a>
+        <?php endif ?>
       </li>
     <?php else: ?>
       <li>
-        <?php if ($active == "r"): ?><b>Register</b><?php else: ?><a href="/register">Register</a><?php endif ?>
+        <?php if ($active == "r"): ?>
+          <b>Register</b>
+        <?php else: ?>
+          <a href="/register">Register</a>
+        <?php endif ?>
       </li>
       <li>
-        <?php if ($active == "li"): ?><b>Sign In</b><?php else: ?><a href="/login">Sign In</a><?php endif ?>
+        <?php if ($active == "li"): ?>
+          <b>Sign In</b>
+        <?php else: ?>
+          <a href="/login">Sign In</a>
+        <?php endif ?>
       </li>
     <?php endif ?>
   </ul>

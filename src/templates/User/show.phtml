@@ -1,5 +1,7 @@
 <?php $this->layout('default') ?>
 
+<?php $this->partial('navbar', ['active' => 'a']) ?>
+
 <h1>GCDb &#9656; Account Page (<?= $user['email'] ?>)</h1>
 
 <p><a href="<?= $this->link('User/edit') ?>">Settings</a></p>
