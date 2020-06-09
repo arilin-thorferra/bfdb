@@ -1,6 +1,15 @@
-<?php $this->layout('default') ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTP <?= $code ?></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
 <h1>
   <?= $code ?>
   <span style="font-weight:300;color:#777"><?= $reason ?></span>
 </h1>
+</body>
+</html>

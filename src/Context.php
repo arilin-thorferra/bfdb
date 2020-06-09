@@ -92,6 +92,41 @@ class Context
     }
 
     /**
+     * Add a message to the flash array
+     *
+     * @param string $message
+     * @param string $class
+     * @return void
+     */
+    public static function flash(string $message, string $class = "flash"): void
+    {
+        if (isset($_SESSION['flash'])) {
+            array_push($_SESSION['flash'], [$class, $message]);
+        } else {
+            $_SESSION['flash'] = [
+                [$class, $message]
+            ];
+        }
+    }
+
+    /**
+     * Return the flash array as HTML <div> tags
+     *
+     * @return string
+     */
+    public static function getFlash()
+    {
+        $retval = '';
+        if (isset($_SESSION['flash'])) {
+            foreach ($_SESSION['flash'] as $message) {
+                $retval .= "<div class='{$message[0]}'>{$message[1]}</div>";
+            }
+        }
+        echo $retval;
+        unset($_SESSION['flash']);
+    }
+
+    /**
      * Get the data access layer adapter, instantiating it if necessary
      */
     public static function getDba()

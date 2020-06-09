@@ -87,3 +87,10 @@ nav ul.right li {
   border: 1px solid #99f;
   border-radius: 0.3333rem;
 }
+
+.flash {
+  padding: 0.8rem 1rem;
+  background-color: #efe;
+  border: 1px solid #9f9;
+  border-radius: 0.3333rem;
+}

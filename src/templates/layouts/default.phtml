@@ -8,6 +8,8 @@
 </head>
 <body>
 
+  <?php $this->partial('navbar', ['active' => $active]) ?>
+  <?php Context::getFlash() ?>
   <?= $_content ?>
 
 </body>

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Action;
 
+use Context;
 use Form;
 use DAL\UserMapper;
 
@@ -42,6 +43,7 @@ class User extends BaseAction
         // it's okay, go ahead and create the user
         $user = $u->create();
         $_SESSION['user'] = $user;
+        \Context::flash('Account created!');
         return $this->response->redirect('/account');
     }
 

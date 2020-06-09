@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Action;
 
 use Form;
+use Context;
 
 class Session extends BaseAction
 {
@@ -32,7 +33,7 @@ class Session extends BaseAction
         }
         if (!$f->hasErrors()) {
             $user = $u->find($_POST['email'], 'email');
-            \Context::debug(var_export($user, true));
+            Context::debug(var_export($user, true));
             if (!$user) {
                 $f->setError('email', 'Email address not found');
             } else {
@@ -45,6 +46,7 @@ class Session extends BaseAction
             return $this->renderFormResponse('login', $f);
         }
         $_SESSION['user'] = $user['id'];
+        Context::flash('Logged in!');
         return $this->response->redirect('/account');
     }
 
@@ -52,6 +54,7 @@ class Session extends BaseAction
     public function get_logout()
     {
         unset($_SESSION['user']);
+        Context::flash('Logged out!');
         return $this->response->redirect('/');
     }
 }
