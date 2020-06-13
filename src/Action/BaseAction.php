@@ -14,7 +14,15 @@ abstract class BaseAction
     protected $request;
     protected $response;
 
+    /**
+     * Whitelist: methods in this array can be used by non-logged-in users,
+     * and all other methods are denied to them.
+     */
     const ALLOW = [];
+    /**
+     * Blacklist: methods in this array cannot be used by non-logged-in users,
+     * and all other methods are allowed to them.
+     */
     const DENY = [];
 
     /**
@@ -79,11 +87,9 @@ abstract class BaseAction
      * Authorize access to an action
      * 
      * This method is called before all action methods, and must return
-     * TRUE for the user to be allowed to take the action. The default
-     * implementation lets action classes specify either a list of methods
-     * that users who are not logged in are allowed to access, denying access
-     * to others in the class (the ALLOW array), or the reverse (the DENY
-     * array).
+     * TRUE for the user to be allowed to take the action. This default
+     * implementation uses the ALLOW/DENY whitelist and blacklist arrays
+     * to restrict access to a method to only logged-in users.
      * 
      * This method can be overridden in child classes to perform other checks
      * like administration roles.

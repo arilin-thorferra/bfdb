@@ -43,7 +43,7 @@ class User extends BaseAction
         // it's okay, go ahead and create the user
         $user = $u->create();
         $_SESSION['user'] = $user;
-        \Context::flash('Account created!');
+        Context::flash('Account created!');
         return $this->response->redirect('/account');
     }
 
