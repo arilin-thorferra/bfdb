@@ -1,11 +1,16 @@
+#title {
+  margin: modular-scale(6) auto modular-scale(3) auto;
+  text-align: center;
+}
+
 .debuginfo {
   white-space: pre;
   font-family: $font-stack-monaco;
   font-size: modular-scale(-1);
   margin-top: modular-scale(3);
   padding: modular-scale(-1) modular-scale(0);
-  background-color: #eef;
-  border: 1px solid #99f;
+  background-color: #e8e8e8;
+  border: 1px solid #bbb;
   border-radius: 0.3333rem;
 }
 

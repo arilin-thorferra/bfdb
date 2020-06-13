@@ -3,11 +3,21 @@ $bourbon: (
   "modular-scale-base": 1rem
 );
 
+$paper: #f8f8f8;
+$ink: #222;
+$accent: #882e8e;
+
 body {
   font-family: $font-stack-system;
   font-size: 118.75%;
   margin: 3em;
   line-height: 1.4;
+  color: $ink;
+  background-color: $paper;
+}
+
+a {
+  transition: all 0.3s ease;
 }
 
 p {
@@ -29,17 +39,26 @@ h3 {
 
 
 nav {
+  background-color: lighten($accent, 60%);
+  border-radius: 0.25em;
+  border: 1px solid $accent;
+  padding: 0.2rem 0.5rem;
   display: grid;
   grid-auto-flow: column;
   margin-bottom: modular-scale(2);
   a:link, a:visited {
     text-decoration: none;
-    color: #00C;
+    color: $ink;
     padding: 1px 2px;
     border-radius: 0.25em;
   }
+  .active {
+    font-weight: bold;
+    color: $accent;
+  }
   a:hover {
-    background-color: lighten(#00C, 50%);
+    background-color: $accent;
+    color: $paper;
   }
   ul {
     padding: 0;

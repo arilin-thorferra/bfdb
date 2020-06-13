@@ -24,6 +24,12 @@ body {
   font-size: 118.75%;
   margin: 3em;
   line-height: 1.4;
+  color: #222;
+  background-color: #f8f8f8;
+}
+
+a {
+  transition: all 0.3s ease;
 }
 
 p {
@@ -44,18 +50,27 @@ h3 {
 }
 
 nav {
+  background-color: #fbf3fb;
+  border-radius: 0.25em;
+  border: 1px solid #882e8e;
+  padding: 0.2rem 0.5rem;
   display: grid;
   grid-auto-flow: column;
   margin-bottom: 1.5625rem;
 }
 nav a:link, nav a:visited {
   text-decoration: none;
-  color: #00C;
+  color: #222;
   padding: 1px 2px;
   border-radius: 0.25em;
 }
+nav .active {
+  font-weight: bold;
+  color: #882e8e;
+}
 nav a:hover {
-  background-color: #ccccff;
+  background-color: #882e8e;
+  color: #f8f8f8;
 }
 nav ul {
   padding: 0;
@@ -77,14 +92,19 @@ nav ul.right li {
   padding-left: 0.3rem;
 }
 
+#title {
+  margin: 3.8146972656rem auto 1.953125rem auto;
+  text-align: center;
+}
+
 .debuginfo {
   white-space: pre;
   font-family: "Monaco", "Consolas", "Lucida Console", monospace;
   font-size: 0.8rem;
   margin-top: 1.953125rem;
   padding: 0.8rem 1rem;
-  background-color: #eef;
-  border: 1px solid #99f;
+  background-color: #e8e8e8;
+  border: 1px solid #bbb;
   border-radius: 0.3333rem;
 }
 

@@ -2,21 +2,21 @@
   <ul class="left">
     <li>
       <?php if ($active == "h"): ?>
-        <b>Home</b>
+        <span class="active">Home</span>
       <?php else: ?>
         <a href="/">Home</a>
       <?php endif ?>
     </li>
     <li>
       <?php if ($active == "b"): ?>
-        <b>Browse</b>
+        <span class="active">Browse</span>
       <?php else: ?>
         <a href="/browse">Browse</a>
       <?php endif ?>
     </li>
     <li>
       <?php if ($active == "s"): ?>
-        <b>Search</b>
+        <span class="active">Search</span>
       <?php else: ?>
         <a href="/search">Search</a>
       <?php endif ?>
@@ -26,14 +26,14 @@
     <?php if (@$_SESSION['user']): ?>
       <li>
         <?php if ($active == "a"): ?>
-          <b>Account</b>
+          <span class="active">Account</span>
         <?php else: ?>
           <a href="/account">Account</a>
         <?php endif ?>
       </li>
       <li>
         <?php if ($active == "lo"): ?>
-          <b>Sign Out</b>
+          <span class="active">Sign Out</span>
         <?php else: ?>
           <a href="/logout">Sign Out</a>
         <?php endif ?>
@@ -41,14 +41,14 @@
     <?php else: ?>
       <li>
         <?php if ($active == "r"): ?>
-          <b>Register</b>
+          <span class="active">Register</span>
         <?php else: ?>
           <a href="/register">Register</a>
         <?php endif ?>
       </li>
       <li>
         <?php if ($active == "li"): ?>
-          <b>Sign In</b>
+          <span class="active">Sign In</span>
         <?php else: ?>
           <a href="/login">Sign In</a>
         <?php endif ?>
