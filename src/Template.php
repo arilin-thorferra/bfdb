@@ -98,14 +98,14 @@ class Template
      * Return the URL for a route
      *
      * @param string $route
-     * @param array $args
+     * @param mixed $args
      * @return string
      */
-    protected function link(string $route, array $args = []): string
+    protected function link(string $route, $args = []): string
     {
         $routes = Settings::routes();
         $handler = new \Route\Handler($routes);
-        return $handler->findUrl($route, $args);
+        return $handler->findUrl($route, (array) $args);
     }
 
     /**
