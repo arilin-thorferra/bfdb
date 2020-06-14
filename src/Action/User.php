@@ -6,6 +6,7 @@ namespace Action;
 
 use Context;
 use Form;
+use DAL\CharacterMapper;
 use DAL\UserMapper;
 
 class User extends BaseAction
@@ -51,7 +52,10 @@ class User extends BaseAction
     public function get_show()
     {
         $u = new UserMapper();
+        $c = new CharacterMapper();
         $user = $u->find($_SESSION['user']);
-        return $this->renderResponse('show', ['user' => $user]);
+        $characters = $c->findSet('user_id', $_SESSION['user']);
+        Context::debug(var_export($characters, true));
+        return $this->renderResponse('show', compact('user', 'characters'));
     }
 }

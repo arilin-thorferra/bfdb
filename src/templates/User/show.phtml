@@ -1,5 +1,26 @@
 <?php $this->layout('default', ['active' => 'a']) ?>
 
-<h1>GCDb &#9656; Account Page (<?= $user['email'] ?>)</h1>
+<h1>Your account (<?= $user['email'] ?>)</h1>
 
-<p><a href="<?= $this->link('User/edit') ?>">Settings</a></p>
+<h2>Your characters</h2>
+
+<?php if (count($characters) === 0): ?>
+  <p>You have no characters yet! Click <b>Add New</b> to get started.</p>
+<?php else: ?>
+  <ul>
+    <?php foreach ($characters as $c): ?>
+      <li>
+        <a href="<?= $this->link('Character/edit', $c['uniqid']) ?>"><?= $c['char_name'] ?></a>
+      </li>
+    <?php endforeach ?>
+  </ul>
+<?php endif ?>
+
+<a class="button" href="<?= $this->link('Character/create') ?>">Add New</a>
+
+<h2>Account options</h2>
+
+<ul>
+  <li><a href="<?= $this->link('User/edit') ?>">Change password</a></li>
+  <li>Delete</li>
+</ul>
