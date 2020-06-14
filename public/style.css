@@ -38,11 +38,12 @@ p {
 
 h1 {
   font-size: 2.44140625rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2.44140625rem;
 }
 
 h2 {
   font-size: 1.953125rem;
+  margin-bottom: 1.953125rem;
 }
 
 h3 {
@@ -113,4 +114,39 @@ nav ul.right li {
   background-color: #efe;
   border: 1px solid #9f9;
   border-radius: 0.3333rem;
+}
+
+form.login, form.register {
+  display: grid;
+  grid-template-columns: 20% 30%;
+  grid-template-rows: auto;
+  gap: 1em 0.5ex;
+}
+form.login .label, form.register .label {
+  grid-column-start: 1;
+  justify-self: end;
+}
+form.login .field, form.register .field {
+  display: block;
+  grid-column-start: 2;
+  height: 1.5625rem;
+  align-self: center;
+  border: 1px #333 solid;
+  border-radius: 0.25em;
+  padding: 1px 0.5em;
+}
+form.login .button, form.register .button {
+  width: min-content;
+  background-color: #dfdfdf;
+  box-shadow: 2px 2px 4px #c5c5c5;
+}
+form.login span.form-error, form.register span.form-error {
+  display: block;
+  grid-column-start: 3;
+  color: #900;
+  font-size: 0.8rem;
+  align-self: center;
+}
+form.login .field.form-error, form.register .field.form-error {
+  border: 1px #900 solid;
 }

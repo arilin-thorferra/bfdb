@@ -1,19 +1,18 @@
 <?php $this->layout('default', ['active' => 'r']) ?>
 
-<h1>GCDb &#9656; Register</h1>
+<h1>Register</h1>
 
-<?= $f->start() ?>
-  <p>
-    <?= $f->label('Email:', 'email') ?>
-    <?= $f->email('email', ['required' => true, 'autofocus' => true]) ?>
-  </p>
-  <p>
-    <?= $f->label('Password:', 'password') ?>
-    <?= $f->password('password', ['required' => true, 'minlength' => 8]) ?>
-  </p>
-  <p>
-    <?= $f->label('Confirm password:', 'confirm') ?>
-    <?= $f->password('confirm', ['required' => true, 'minlength' => 8]) ?>
-  </p>
+<?= $f->start(['class' => 'register']) ?>
+
+  <?= $f->label('Email:', 'email') ?>
+  <?= $f->email('email', ['required' => true, 'autofocus' => true]) ?>
+
+  <?= $f->label('Password:', 'password') ?>
+  <?= $f->password('password', ['required' => true, 'minlength' => 8]) ?>
+
+  <?= $f->label('Confirm password:', 'confirm') ?>
+  <?= $f->password('confirm', ['required' => true, 'minlength' => 8]) ?>
+
   <?= $f->submit() ?>
+  
 <?= $f->end() ?>

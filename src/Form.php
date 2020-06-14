@@ -79,6 +79,7 @@ class Form
         if ($this->url) {
             $attrs = $attrs + ['action' => $this->url];
         }
+        $attrs = $this->addClass($attrs, 'form');
         return $this->maketag('form', $attrs) .
             "<input type=\"hidden\" name=\"_tok\" value=\"{$_SESSION['token']}\">";
     }
@@ -95,6 +96,7 @@ class Form
     {
         $tag = 'input';
         $attrs = compact('type', 'name') + $attrs;
+        $attrs = $this->addClass($attrs, 'field');
         return $this->maketag($tag, $attrs, $name);
     }
 
@@ -157,6 +159,7 @@ class Form
             }
             $body .= '>';
         }
+        $attrs = $this->addClass($attrs, 'field');
         return $this->maketag('select', $attrs, '', $body);
     }
 
@@ -170,6 +173,7 @@ class Form
     public function textarea(string $name, array $attrs = []): string
     {
         $body = (key_exists($name, $this->values)) ? $this->values[$name] : '';
+        $attrs = $this->addClass($attrs, 'field');
         return $this->maketag('textarea', $attrs, '', $body);
     }
 
@@ -184,6 +188,7 @@ class Form
     public function label(string $text, string $for, array $attrs = []): string
     {
         $attrs = $attrs + ['for' => $for];
+        $attrs = $this->addClass($attrs, 'label');
         return $this->maketag('label', $attrs, '', $text);
     }
 
@@ -198,6 +203,7 @@ class Form
     {
         $attrs = ['type' => 'submit', 'value' => $value] + $attrs;
         $tag = 'input';
+        $attrs = $this->addClass($attrs, 'field button');
         return $this->maketag($tag, $attrs);
     }
 
@@ -232,5 +238,15 @@ class Form
             return true;
         }
         return $this->values['_tok'] === $_SESSION['token'];
+    }
+
+    protected function addClass(array $attrs, string $class): array
+    {
+        if (array_key_exists('class', $attrs)) {
+            $attrs['class'] = $class . ' ' . $attrs['class'];
+        } else {
+            $attrs['class'] = $class;
+        }
+        return $attrs;
     }
 }

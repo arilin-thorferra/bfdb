@@ -1,15 +1,15 @@
 <?php $this->layout('default', ['active' => 'li']) ?>
 
-<h1>GCDb &#9656; Sign In</h1>
+<h1>Sign In</h1>
 
-<?= $f->start() ?>
-  <p>
-    <?= $f->label('Email:', 'email') ?>
-    <?= $f->email('email', ['required' => true, 'autofocus' => true]) ?>
-  </p>
-  <p>
-    <?= $f->label('Password:', 'password') ?>
-    <?= $f->password('password', ['required' => true, 'minlength' => 8]) ?>
-  </p>
+<?= $f->start(['class' => 'login']) ?>
+
+  <?= $f->label('Email:', 'email') ?>
+  <?= $f->email('email', ['required' => true, 'autofocus' => true]) ?>
+
+  <?= $f->label('Password:', 'password') ?>
+  <?= $f->password('password', ['required' => true, 'minlength' => 8]) ?>
+
   <?= $f->submit() ?>
+
 <?= $f->end() ?>
