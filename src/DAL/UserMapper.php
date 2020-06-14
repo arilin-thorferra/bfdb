@@ -8,11 +8,22 @@ class UserMapper extends Mapper
 {
     public const TABLE = 'users';
 
-    public function exists(string $email) : bool
+    /**
+     * Check to see whether an email address is already registered
+     *
+     * @param string $email
+     * @return boolean
+     */
+    public function exists(string $email): bool
     {
-        return (bool)$this->count('email', $email);
+        return (bool) $this->count('email', $email);
     }
-    
+
+    /**
+     * Create a user from form data, hashing the password
+     *
+     * @return void
+     */
     public function create()
     {
         $data = [
