@@ -208,6 +208,26 @@ class Form
     }
 
     /**
+     * Output a generic button
+     *
+     * @param string $text
+     * @param array $attrs
+     * @return string
+     */
+    public function button(string $text = "Button", array $attrs = []): string
+    {
+        if (!array_key_exists('value', $attrs)) {
+            $attrs['value'] = $text;
+        }
+        if (!array_key_exists('type', $attrs)) {
+            $attrs['type'] = 'submit';
+        }
+        $tag = 'button';
+        $attrs = $this->addClass($attrs, 'field button');
+        return $this->maketag($tag, $attrs, '', $text);
+    }
+
+    /**
      * Close the form
      *
      * @return string
