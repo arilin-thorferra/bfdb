@@ -55,7 +55,6 @@ class User extends BaseAction
         $c = new CharacterMapper();
         $user = $u->find($_SESSION['user']);
         $characters = $c->findSet('user_id', $_SESSION['user']);
-        Context::debug(var_export($characters, true));
-        return $this->renderResponse('show', compact('user', 'characters'));
+        return $this->renderFormResponse('show', new Form(), compact('user', 'characters'));
     }
 }

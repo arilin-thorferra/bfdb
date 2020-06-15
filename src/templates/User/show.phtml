@@ -7,7 +7,7 @@
 <?php if (count($characters) === 0): ?>
   <p>You have no characters yet! Click <b>Add New</b> to get started.</p>
 <?php else: ?>
-  <ul>
+  <ul class="options">
     <?php foreach ($characters as $c): ?>
       <li>
         <a href="<?= $this->link('Character/edit', $c['uniqid']) ?>"><?= $c['char_name'] ?></a>
@@ -16,11 +16,28 @@
   </ul>
 <?php endif ?>
 
-<a class="button" href="<?= $this->link('Character/create') ?>">Add New</a>
+<p>
+  <a class="button" href="<?= $this->link('Character/create') ?>">Add New</a>
+</p>
 
 <h2>Account options</h2>
 
-<ul>
-  <li><a href="<?= $this->link('User/edit') ?>">Change password</a></li>
-  <li>Delete</li>
-</ul>
+<h3>Change password</h3>
+
+<?= $f->start(['class' => 'account']) ?>
+
+  <?= $f->label('Old password:', 'old') ?>
+  <?= $f->password('old', ['required' => true, 'minlength' => 8]) ?>
+
+  <?= $f->label('New password:', 'new') ?>
+  <?= $f->password('new', ['required' => true, 'minlength' => 8]) ?>
+
+  <?= $f->submit('Change') ?>
+
+<?= $f->end() ?>
+
+<h3>Delete account and characters</h3>
+
+<p>
+  <a class="button delete" href="<?= $this->link('User/delete') ?>">Delete</a>
+</p>
