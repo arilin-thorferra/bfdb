@@ -4,14 +4,19 @@
 }
 
 .debuginfo {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   white-space: pre;
   font-family: $font-stack-monaco;
   font-size: modular-scale(-1);
   margin-top: modular-scale(3);
-  padding: modular-scale(-1) modular-scale(0);
-  background-color: #e8e8e8;
-  border: 1px solid #bbb;
-  border-radius: 0.3333rem;
+  margin-bottom: 0;
+  padding: modular-scale(0) modular-scale(1);
+  background-image: repeating-linear-gradient(
+    135deg, #fee, #fee 15px, #ffe5e5 15px, #ffe5e5 30px
+  );
 }
 
 .flash {
@@ -22,17 +27,17 @@
 }
 
 
-form.login, form.register {
+form.login, form.register, form.account {
   display: grid;
-  grid-template-columns: 20% 30%;
+  grid-template-columns: 10rem 20rem;
   grid-template-rows: auto;
-  gap: 1em 0.5ex;
+  gap: 1em 0.5em;
   .label {
     grid-column-start: 1;
     justify-self: end;
   }
   .field {
-    display: block;
+    // display: block;
     grid-column-start: 2;
     height: modular-scale(2);
     align-self: center;
@@ -43,7 +48,11 @@ form.login, form.register {
   .button {
     width: min-content;
     background-color: darken($paper, 10%);
-    box-shadow: 2px 2px 4px darken($paper, 20%);
+    // box-shadow: 2px 2px 4px darken($paper, 20%);
+    font-size: modular-scale(-1);
+    padding: 0.5em;
+    height: auto;
+    cursor: pointer;
   }
   span.form-error {
     display: block;
@@ -55,4 +64,26 @@ form.login, form.register {
   .field.form-error {
     border: 1px #900 solid;
   }
+}
+
+a.button {
+  background-color: darken($paper, 10%);
+  // box-shadow: 2px 2px 4px darken($paper, 20%);
+  border: 1px #333 solid;
+  border-radius: 0.25em;
+  padding: 0.5em;
+  color: $ink;
+  text-decoration: none;
+  font-size: modular-scale(-1);
+}
+
+.button.delete {
+  background-color: #900;
+  color: white;
+  margin-left: 10.5rem;
+}
+
+.options {
+  list-style: none;
+  // margin-left: 1em;
 }
