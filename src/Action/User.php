@@ -11,16 +11,22 @@ use DAL\UserMapper;
 
 class User extends BaseAction
 {
-    // only the create action is allowed to users not logged in
+    /**
+     * Whitelist create action; everything else requires logged in user
+     */
     const ALLOW = ['create'];
 
-    // initial form for creating new users
+    /**
+     * New user registration form (GET /register)
+     */
     public function get_create()
     {
         return $this->renderFormResponse('create', new Form());
     }
 
-    // POST action for creating new users
+    /**
+     * Create a new user from form (POST /register)
+     */
     public function post_create()
     {
         $f = new Form($_POST);
@@ -48,13 +54,19 @@ class User extends BaseAction
         return $this->response->redirect('/account');
     }
 
-    // user account page
+    /**
+     * Display the user's account page (GET /account)
+     */
     public function get_show()
     {
         $u = new UserMapper();
         $c = new CharacterMapper();
         $user = $u->find($_SESSION['user']);
         $characters = $c->findSet('user_id', $_SESSION['user']);
-        return $this->renderFormResponse('show', new Form(), compact('user', 'characters'));
+        return $this->renderFormResponse(
+            'show',
+            new Form(),
+            compact('user', 'characters')
+        );
     }
 }

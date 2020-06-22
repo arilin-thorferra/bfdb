@@ -18,7 +18,6 @@ return [
 
     '/register'        => ['User', 'create'],
     '/account'         => ['User', 'show'],
-    '/account/edit'    => ['User', 'edit'],
     '/account/delete'  => ['User', 'delete'],
 
     '/search'          => ['Character', 'search'],
