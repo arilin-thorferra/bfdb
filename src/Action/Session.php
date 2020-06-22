@@ -10,7 +10,9 @@ use Context;
 class Session extends BaseAction
 {
 
-    // login form
+    /**
+     * Login form (GET /login)
+     */
     public function get_login()
     {
         if (isset($_SESSION['user'])) {
@@ -19,7 +21,9 @@ class Session extends BaseAction
         return $this->renderFormResponse('login', new Form());
     }
 
-    // process login
+    /**
+     * Process login (POST /login)
+     */
     public function post_login()
     {
         $f = new Form($_POST);
@@ -46,15 +50,15 @@ class Session extends BaseAction
             return $this->renderFormResponse('login', $f);
         }
         $_SESSION['user'] = $user['id'];
-        Context::flash('Logged in!');
         return $this->response->redirect('/account');
     }
 
-    // logout
+    /**
+     * Log out (GET /logout)
+     */
     public function get_logout()
     {
         unset($_SESSION['user']);
-        Context::flash('Logged out!');
         return $this->response->redirect('/');
     }
 }

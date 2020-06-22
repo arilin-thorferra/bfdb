@@ -199,7 +199,7 @@ class Form
      * @param array $attrs
      * @return string
      */
-    public function submit(string $value = "Submit", array $attrs = []): string
+    public function submit(string $value = 'Submit', array $attrs = []): string
     {
         $attrs = ['type' => 'submit', 'value' => $value] + $attrs;
         $tag = 'input';
@@ -214,7 +214,7 @@ class Form
      * @param array $attrs
      * @return string
      */
-    public function button(string $text = "Button", array $attrs = []): string
+    public function button(string $text, array $attrs = []): string
     {
         if (!array_key_exists('value', $attrs)) {
             $attrs['value'] = $text;
@@ -236,12 +236,24 @@ class Form
     {
         return "</form>";
     }
-
-    public function setError(string $error, string $msg): void
+    
+    /**
+     * Set an error message on a form field
+     *
+     * @param string $field
+     * @param string $msg
+     * @return void
+     */
+    public function setError(string $field, string $msg): void
     {
-        $this->errors[$error] = $msg;
+        $this->errors[$field] = $msg;
     }
-
+    
+    /**
+     * Return whether the current form object has erorrs
+     *
+     * @return boolean
+     */
     public function hasErrors(): bool
     {
         return !empty($this->errors);
@@ -259,7 +271,14 @@ class Form
         }
         return $this->values['_tok'] === $_SESSION['token'];
     }
-
+    
+    /**
+     * Add a class attribute to the attribute array
+     *
+     * @param array $attrs
+     * @param stirng $class
+     * @return array
+     */
     protected function addClass(array $attrs, string $class): array
     {
         if (array_key_exists('class', $attrs)) {
