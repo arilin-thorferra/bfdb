@@ -1,0 +1,23 @@
+<?php $this->layout('default', ['active' => '', 'title' => 'GCDB > Settings']) ?>
+
+<h1>Settings (<?= $user['email'] ?>)</h1>
+
+<h2>Change password</h2>
+
+<?= $f->start(['class' => 'account']) ?>
+
+  <?= $f->label('Old password:', 'old') ?>
+  <?= $f->password('old', ['required' => true, 'minlength' => 8]) ?>
+
+  <?= $f->label('New password:', 'new') ?>
+  <?= $f->password('new', ['required' => true, 'minlength' => 8]) ?>
+
+  <?= $f->submit('Change') ?>
+
+<?= $f->end() ?>
+
+<h3>Delete account and characters</h3>
+
+<p>
+  <a class="button delete" href="<?= $this->link('User/delete') ?>">Delete</a>
+</p>

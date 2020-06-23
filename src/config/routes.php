@@ -17,7 +17,8 @@ return [
     '/logout'          => ['Session', 'logout'],
 
     '/register'        => ['User', 'create'],
-    '/account'         => ['User', 'show'],
+    '/account'         => ['User', 'account'],
+    '/account/edit'    => ['User', 'edit'],
     '/account/delete'  => ['User', 'delete'],
 
     '/search'          => ['Character', 'search'],

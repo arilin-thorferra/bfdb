@@ -49,7 +49,7 @@ class Session extends BaseAction
         if ($f->hasErrors()) {
             return $this->renderFormResponse('login', $f);
         }
-        $_SESSION['user'] = $user['id'];
+        $_SESSION['user'] = $user;
         return $this->response->redirect('/account');
     }
 

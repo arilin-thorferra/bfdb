@@ -57,16 +57,29 @@ class User extends BaseAction
     /**
      * Display the user's account page (GET /account)
      */
-    public function get_show()
+    public function get_account()
     {
         $u = new UserMapper();
         $c = new CharacterMapper();
-        $user = $u->find($_SESSION['user']);
-        $characters = $c->findSet('user_id', $_SESSION['user']);
+        $user = $_SESSION['user'];
+        $characters = $c->findSet('user_id', $user['id']);
         return $this->renderFormResponse(
-            'show',
+            'account',
             new Form(),
             compact('user', 'characters')
+        );
+    }
+
+    /**
+     * Display the user's account editing page (GET /account/edit)
+     */
+    public function get_edit()
+    {
+        $u = new UserMapper();
+        return $this->renderFormResponse(
+            'edit',
+            new Form(),
+            ['user' => $_SESSION['user']]
         );
     }
 }

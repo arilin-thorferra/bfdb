@@ -30,6 +30,12 @@ class UserMapper extends Mapper
             'email' => $_POST['email'],
             'passwd' => password_hash($_POST['password'], PASSWORD_DEFAULT)
         ];
-        return $this->insert($data);
+        $id = $this->insert($data);
+        return [
+            'id' => $id,
+            'email' => $_POST['email'],
+            'is_admin' => false,
+            'adult_ok' => false
+        ];
     }
 }
