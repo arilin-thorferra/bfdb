@@ -28,6 +28,17 @@ body {
   background-color: #fcfcfa;
 }
 
+a:link, a:visited {
+  color: #111191;
+  text-decoration-color: blue;
+}
+
+a:hover {
+  color: blue;
+  background-color: #efeffa;
+  border-radius: 0.25em;
+}
+
 a {
   transition: all 0.3s ease;
 }
@@ -94,6 +105,14 @@ nav ul.right {
 }
 nav ul.right li {
   padding-left: 0.3rem;
+}
+
+hr {
+  margin: 2.44140625rem auto;
+  width: 50%;
+  background-color: #882e8e;
+  height: 1px;
+  border: none;
 }
 
 #title {

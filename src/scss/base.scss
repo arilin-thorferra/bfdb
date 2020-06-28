@@ -6,6 +6,7 @@ $bourbon: (
 $paper: #fcfcfa;
 $ink: #222;
 $accent: #882e8e;
+$link: blue;
 
 body {
   font-family: $font-stack-system;
@@ -14,6 +15,17 @@ body {
   line-height: 1.4;
   color: $ink;
   background-color: $paper;
+}
+
+a:link, a:visited {
+  color: mix($ink, $link);
+  text-decoration-color: $link;
+}
+
+a:hover {
+  color: $link;
+  background-color: mix($link, $paper, 5%);
+  border-radius: 0.25em;
 }
 
 a {
@@ -83,4 +95,12 @@ nav {
       padding-left: 0.3rem;
     }
   }
+}
+
+hr {
+  margin: modular-scale(4) auto;
+  width: 50%;
+  background-color: $accent;
+  height: 1px;
+  border: none;
 }
