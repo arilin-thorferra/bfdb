@@ -7,10 +7,13 @@
 <?= $f->start(['class' => 'account']) ?>
 
   <?= $f->label('Old password:', 'old') ?>
-  <?= $f->password('old', ['required' => true, 'minlength' => 8]) ?>
+  <?= $f->password('old', ['required' => true, 'minlength' => 8, 'autofocus' => true]) ?>
 
   <?= $f->label('New password:', 'new') ?>
   <?= $f->password('new', ['required' => true, 'minlength' => 8]) ?>
+
+  <?= $f->label('Confirm new:', 'confirm') ?>
+  <?= $f->password('confirm', ['required' => true, 'minlength' => 8]) ?>
 
   <?= $f->submit('Change') ?>
 

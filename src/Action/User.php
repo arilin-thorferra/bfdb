@@ -75,11 +75,38 @@ class User extends BaseAction
      */
     public function get_edit()
     {
-        $u = new UserMapper();
         return $this->renderFormResponse(
             'edit',
             new Form(),
             ['user' => $_SESSION['user']]
         );
+    }
+
+    public function post_edit()
+    {
+        $f = new Form($_POST);
+        $u = new UserMapper();
+        $user = $u->find($_SESSION['user']['id']);
+
+        // validate the form and re-display if there are errors
+        if (!password_verify($_POST['old'], $user['passwd'])) {
+            $f->setError('old', 'Invalid password');
+        }
+        if (mb_strlen($_POST['new']) < 8) {
+            $f->setError('new', 'Password must be at least 8 characters');
+        } elseif ($_POST['new'] != $_POST['confirm']) {
+            $f->setError('confirm', 'Passwords must match!');
+        }
+        if ($f->hasErrors()) {
+            return $this->renderFormResponse('edit', $f, ['user' => $user]);
+        }
+
+        // update the password
+        $u->update(
+            $user['id'],
+            ['passwd' => password_hash($_POST['new'], PASSWORD_DEFAULT)]
+        );
+        Context::flash('Password updated!');
+        return $this->response->redirectRoute('User/account');
     }
 }
