@@ -163,4 +163,25 @@ class Response
         $this->setHeader('Location', $url);
         return $this;
     }
+    
+    /**
+    * Return a redirection response based on a route
+    *
+    * @param string $url
+    * @param int $type
+    * @return Response
+    */
+    public function redirectRoute(
+        string $route,
+        int $type = 303,
+        array$args = []
+    ): Response
+    {
+        $routes = \Settings::routes();
+        $handler = new \Route\Handler($routes);
+        $url = $handler->findUrl($route, $args);
+        $this->setStatus($type);
+        $this->setHeader('Location', $url);
+        return $this;
+    }
 }
