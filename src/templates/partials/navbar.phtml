@@ -7,52 +7,52 @@
         <a href="/">Home</a>
       <?php endif ?>
     </li>
-    <?php if (@$_SESSION['user']): ?>
-    <li>
-      <?php if ($active == "a"): ?>
-      <span class="active">Account</span>
-      <?php else: ?>
-      <a href="/account">Account</a>
-      <?php endif ?>
-    </li>
-    <li>
-      <?php if ($active == "lo"): ?>
-      <span class="active">Sign Out</span>
-      <?php else: ?>
-      <a href="/logout">Sign Out</a>
-      <?php endif ?>
-    </li>
-    <?php else: ?>
-    <li>
-      <?php if ($active == "r"): ?>
-      <span class="active">Register</span>
-      <?php else: ?>
-      <a href="/register">Register</a>
-      <?php endif ?>
-    </li>
-    <li>
-      <?php if ($active == "li"): ?>
-      <span class="active">Sign In</span>
-      <?php else: ?>
-      <a href="/login">Sign In</a>
-      <?php endif ?>
-    </li>
-    <?php endif ?>
-  </ul>
-  <ul class="right">
     <li>
       <?php if ($active == "b"): ?>
-      <span class="active">Browse</span>
+        <span class="active">Browse</span>
       <?php else: ?>
-      <a href="/browse">Browse</a>
+        <a href="/browse">Browse</a>
       <?php endif ?>
     </li>
     <li>
       <?php if ($active == "s"): ?>
-      <span class="active">Search</span>
+        <span class="active">Search</span>
       <?php else: ?>
-      <a href="/search">Search</a>
+        <a href="/search">Search</a>
       <?php endif ?>
     </li>
+  </ul>
+  <ul class="right">
+    <?php if (@$_SESSION['user']): ?>
+      <li>
+        <?php if ($active == "a"): ?>
+          <span class="active">Account</span>
+        <?php else: ?>
+          <a href="/account">Account</a>
+        <?php endif ?>
+      </li>
+      <li>
+        <?php if ($active == "lo"): ?>
+          <span class="active">Sign Out</span>
+        <?php else: ?>
+          <a href="/logout">Sign Out</a>
+        <?php endif ?>
+      </li>
+    <?php else: ?>
+      <li>
+        <?php if ($active == "r"): ?>
+          <span class="active">Register</span>
+        <?php else: ?>
+          <a href="/register">Register</a>
+        <?php endif ?>
+      </li>
+      <li>
+        <?php if ($active == "li"): ?>
+          <span class="active">Sign In</span>
+        <?php else: ?>
+          <a href="/login">Sign In</a>
+        <?php endif ?>
+      </li>
+    <?php endif ?>
   </ul>
 </nav>
