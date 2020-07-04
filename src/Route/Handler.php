@@ -19,6 +19,8 @@ use RuntimeException;
 class Handler
 {
 
+    const METHODS = ['get', 'post', 'put', 'delete'];
+
     private $routes = [];
 
     /**
@@ -174,6 +176,9 @@ class Handler
                 continue;
             }
             [$http_method, $action_method] = explode('_', $method_name);
+            if (!in_array($http_method, $this::METHODS)) {
+                continue;
+            }
             if ($action_method == $method) {
                 $allowed[] = strtoupper($http_method);
             }
