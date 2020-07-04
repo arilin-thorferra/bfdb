@@ -2,12 +2,15 @@
 
 function handler($e)
 {
-    // TODO handle this differently if not in debug mode!
-    Context::debug($e->getMessage());
-    Context::debug($e->getTraceAsString());
-    echo "<div style='color:#900'><p><b>Uncaught exception!</b></p><pre>\n";
-    echo Context::get('debugmsg');
-    echo "</pre>\n";
+    $response = new \Http\Response(500);
+    http_response_code(500);
+    if (Settings::get('debug')) {
+        $response->addToBody(
+        '<b style="color:#C00">' . $e->getMessage() . '</b>' .
+        '<pre style="font:14px/1.5 Monaco">' . $e->getTraceAsString() . '</pre>'
+        );
+    }
+    echo $response->getBody();
 }
 
 set_exception_handler('handler');
