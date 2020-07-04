@@ -70,8 +70,7 @@ class Template
     {
         if (!file_exists($_file)) {
             $error = "Template '$_file' not found";
-            error_log($error);
-            Context::debug($error);
+            throw new RuntimeException($error);
             return '';
         }
         extract($_args, EXTR_SKIP);
