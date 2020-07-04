@@ -73,11 +73,6 @@ class Handler
      * method with the name "httpmethod_action" (e.g., "get_index"). A
      * response will always be returned -- if the action invocation fails,
      * execute() will return a 404, 405, or 500 response as appropriate.
-     * 
-     * Actions must return either \Http\Response or \Route\Route objects.
-     * The former will be returned as is; the latter will create an internal
-     * redirect.
-     *
      * @param Request $request
      * @param Route $route
      * @return Response
@@ -113,10 +108,6 @@ class Handler
             return $response;
         }
         $response = $action->$call($route->getArgs());
-        // if we've received a Route, this is an internal redirect
-        if ($response instanceof Route) {
-            $response = $this->execute($request, $response);
-        }
         return $response;
     }
 
