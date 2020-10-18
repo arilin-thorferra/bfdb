@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Exception handler
+ *
+ * Returns HTTP 500 (Internal Server Error) and prints a stack trace if the
+ * system is in debug mode.
+ */
 function handler($e)
 {
     $response = new \Http\Response(500);
