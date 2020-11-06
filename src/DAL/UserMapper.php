@@ -22,9 +22,9 @@ class UserMapper extends Mapper
     /**
      * Create a user from form data, hashing the password
      *
-     * @return void
+     * @return array
      */
-    public function create()
+    public function create(): array
     {
         $data = [
             'email' => $_POST['email'],

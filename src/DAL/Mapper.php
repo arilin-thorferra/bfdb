@@ -9,7 +9,7 @@ use RuntimeException;
 
 /**
  * Base class for data mapping. This will obtain the database adapter
- * singleton from Context, creating it if necessry, and execute a PDO
+ * singleton from Context, creating it if necessary, and execute a PDO
  * query. Functions build on one another from low level to (medium) high.
  * This class should be extended by mappers that correspond to tables;
  * a mapper only technically needs to define a TABLE constant with the name
