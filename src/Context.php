@@ -122,12 +122,14 @@ class Context
                 $retval .= "<div class='{$message[0]}'>{$message[1]}</div>";
             }
         }
-        echo $retval;
         unset($_SESSION['flash']);
+        return $retval;
     }
 
     /**
      * Get the data access layer adapter, instantiating it if necessary
+     *
+     * @return \DAL\Adapter\BaseAdapter
      */
     public static function getDba()
     {

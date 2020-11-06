@@ -9,7 +9,7 @@
 <body>
 
   <?php $this->partial('navbar', ['active' => $active]) ?>
-  <?php Context::getFlash() ?>
+  <?= Context::getFlash() ?>
   <?= $_content ?>
 
 </body>
