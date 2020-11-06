@@ -250,7 +250,7 @@ class Form
     }
     
     /**
-     * Return whether the current form object has erorrs
+     * Return whether the current form object has errors
      *
      * @return boolean
      */
@@ -276,13 +276,13 @@ class Form
      * Add a class attribute to the attribute array
      *
      * @param array $attrs
-     * @param stirng $class
+     * @param string $class
      * @return array
      */
     protected function addClass(array $attrs, string $class): array
     {
         if (array_key_exists('class', $attrs)) {
-            $attrs['class'] = $class . ' ' . $attrs['class'];
+            $attrs['class'] .= ' ' . $class;
         } else {
             $attrs['class'] = $class;
         }
