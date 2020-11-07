@@ -1,4 +1,4 @@
-<?php $this->layout('default', ['active' => 'a', 'title' => 'GCDb > Account']) ?>
+<?php $this->layout('default', ['active' => 'a', 'title' => 'BFDb > Account']) ?>
 
 <h1>Your characters</h1>
 
@@ -8,11 +8,13 @@
   <ul class="options">
     <?php foreach ($characters as $c): ?>
       <li>
-        <a href="<?= $this->link('Character/edit', $c['uniqid']) ?>"><?= $c['char_name'] ?></a>
+        <a href="<?= $this->link('Character/edit', $c['uniqid']) ?>"><?= $c[
+  'char_name'
+] ?></a>
       </li>
-    <?php endforeach ?>
+    <?php endforeach; ?>
   </ul>
-<?php endif ?>
+<?php endif; ?>
 
 <p>
   <a class="button" href="<?= $this->link('Character/create') ?>">Add New</a>

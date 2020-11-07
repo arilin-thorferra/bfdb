@@ -1,6 +1,6 @@
-# GCDb
+# BFDb
 
-The Giants' Club database: a simple collection of character sheets for fursonas.
+The BigFurs Database: a simple collection of character sheets for fursonas.
 
 A work in progress. Incomplete and largely non-functional!
 
@@ -8,18 +8,18 @@ A work in progress. Incomplete and largely non-functional!
 
 PHP 7.1 or higher, with SQLite3 support enabled. (And probably other things enabled that should likely be there out of the box.)
 
-Note that I'm using [CodeKit](https://codekitapp.com) for SCSS compilation, set to compile everything in `src/scss/` to the `public/style.css` stylesheet.
+Note that I'm using [CodeKit](https://codekitapp.com) for SCSS compilation, set to compile everything in `src/scss/` to the `public/style.css` stylesheet. If you can't use CodeKit (or just choose not to), you're on your own for handling this.
 
 ## Setup
 
-Warning: "incomplete and largely non-functional" was not a euphemism.
+Warning: "incomplete and largely non-functional" is not a joke.
 
-1. Initialize the database:
+1.  Initialize the database:
 
         cd src/db
-        sqlite3 gcdb.db < schema.sql
+        sqlite3 bfdb.db < schema.sql
 
-2. Start the PHP test server from the top-level directory (e.g., the one that contains this file):
+2.  Start the PHP test server from the top-level directory (e.g., the one that contains this file):
 
         php -S 127.0.0.1:4000 -t public
 

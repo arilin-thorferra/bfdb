@@ -1,5 +1,5 @@
 /*
- * GCDb - master SQLite schema
+ * BFDb - master SQLite schema
  * ===========================
  *
  * DO NOT execute this script if you do not intend to initialize the
