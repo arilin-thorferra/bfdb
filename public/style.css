@@ -28,7 +28,8 @@ body {
   background-color: #fcfcfa;
 }
 
-a:link, a:visited {
+a:link,
+a:visited {
   color: #111191;
   text-decoration-color: blue;
 }
@@ -65,15 +66,16 @@ h3 {
 }
 
 nav {
-  background-color: #fbf3fb;
+  background-color: white;
   border-radius: 0.25em;
-  border: 1px solid #882e8e;
+  border: 1px solid #5982c2;
   padding: 0.2rem 0.5rem;
   display: grid;
   grid-auto-flow: column;
   margin-bottom: 1.5625rem;
 }
-nav a:link, nav a:visited {
+nav a:link,
+nav a:visited {
   text-decoration: none;
   color: #222;
   padding: 1px 2px;
@@ -81,10 +83,10 @@ nav a:link, nav a:visited {
 }
 nav .active {
   font-weight: bold;
-  color: #882e8e;
+  color: #5982c2;
 }
 nav a:hover {
-  background-color: #882e8e;
+  background-color: #5982c2;
   color: #fcfcfa;
 }
 nav ul {
@@ -110,7 +112,7 @@ nav ul.right li {
 hr {
   margin: 2.44140625rem auto;
   width: 50%;
-  background-color: #882e8e;
+  background-color: #5982c2;
   height: 1px;
   border: none;
 }

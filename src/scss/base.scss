@@ -1,11 +1,11 @@
 $bourbon: (
   "modular-scale-ratio": $major-third,
-  "modular-scale-base": 1rem
+  "modular-scale-base": 1rem,
 );
 
 $paper: #fcfcfa;
 $ink: #222;
-$accent: #882e8e;
+$accent: #5982c2;
 $link: blue;
 
 body {
@@ -17,7 +17,8 @@ body {
   background-color: $paper;
 }
 
-a:link, a:visited {
+a:link,
+a:visited {
   color: mix($ink, $link);
   text-decoration-color: $link;
 }
@@ -53,7 +54,6 @@ h3 {
   margin-bottom: modular-scale(1);
 }
 
-
 nav {
   background-color: lighten($accent, 60%);
   border-radius: 0.25em;
@@ -62,7 +62,8 @@ nav {
   display: grid;
   grid-auto-flow: column;
   margin-bottom: modular-scale(2);
-  a:link, a:visited {
+  a:link,
+  a:visited {
     text-decoration: none;
     color: $ink;
     padding: 1px 2px;
