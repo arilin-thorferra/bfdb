@@ -6,7 +6,7 @@ $bourbon: (
 $paper: #fcfcfa;
 $ink: #222;
 $accent: #5982c2;
-$link: blue;
+$link: darken($accent, 10%);
 
 body {
   font-family: $font-stack-system;
@@ -19,7 +19,7 @@ body {
 
 a:link,
 a:visited {
-  color: mix($ink, $link);
+  color: $link;
   text-decoration-color: $link;
 }
 

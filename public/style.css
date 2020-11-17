@@ -30,13 +30,13 @@ body {
 
 a:link,
 a:visited {
-  color: #111191;
-  text-decoration-color: blue;
+  color: #3e68aa;
+  text-decoration-color: #3e68aa;
 }
 
 a:hover {
-  color: blue;
-  background-color: #efeffa;
+  color: #3e68aa;
+  background-color: #f3f5f6;
   border-radius: 0.25em;
 }
 
@@ -143,17 +143,23 @@ hr {
   border-radius: 0.3333rem;
 }
 
-form.login, form.register, form.account {
+form.login,
+form.register,
+form.account {
   display: grid;
-  grid-template-columns: 10rem 20rem;
+  grid-template-columns: 12rem 24rem;
   grid-template-rows: auto;
   gap: 1em 0.5em;
 }
-form.login .label, form.register .label, form.account .label {
+form.login .label,
+form.register .label,
+form.account .label {
   grid-column-start: 1;
   justify-self: end;
 }
-form.login .field, form.register .field, form.account .field {
+form.login .field,
+form.register .field,
+form.account .field {
   grid-column-start: 2;
   height: 1.5625rem;
   align-self: center;
@@ -161,7 +167,9 @@ form.login .field, form.register .field, form.account .field {
   border-radius: 0.25em;
   padding: 1px 0.5em;
 }
-form.login .button, form.register .button, form.account .button {
+form.login .button,
+form.register .button,
+form.account .button {
   width: min-content;
   background-color: #e9e9da;
   font-size: 0.8rem;
@@ -169,14 +177,18 @@ form.login .button, form.register .button, form.account .button {
   height: auto;
   cursor: pointer;
 }
-form.login span.form-error, form.register span.form-error, form.account span.form-error {
+form.login span.form-error,
+form.register span.form-error,
+form.account span.form-error {
   display: block;
   grid-column-start: 3;
   color: #900;
   font-size: 0.8rem;
   align-self: center;
 }
-form.login .field.form-error, form.register .field.form-error, form.account .field.form-error {
+form.login .field.form-error,
+form.register .field.form-error,
+form.account .field.form-error {
   border: 1px #900 solid;
 }
 

@@ -15,7 +15,11 @@
   margin-bottom: 0;
   padding: modular-scale(0) modular-scale(1);
   background-image: repeating-linear-gradient(
-    135deg, #fee, #fee 15px, #ffe5e5 15px, #ffe5e5 30px
+    135deg,
+    #fee,
+    #fee 15px,
+    #ffe5e5 15px,
+    #ffe5e5 30px
   );
 }
 
@@ -26,10 +30,11 @@
   border-radius: 0.3333rem;
 }
 
-
-form.login, form.register, form.account {
+form.login,
+form.register,
+form.account {
   display: grid;
-  grid-template-columns: 10rem 20rem;
+  grid-template-columns: 12rem 24rem;
   grid-template-rows: auto;
   gap: 1em 0.5em;
   .label {
