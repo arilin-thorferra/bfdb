@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /**
  * Context storage singleton class
- * 
+ *
  * Stores key/value pairs across the current context. This is essentially
  * an implementation of the Registry Pattern.
  */
@@ -16,6 +16,12 @@ class Context
      * @var array
      */
     private static $context = [];
+
+    /**
+     * Database adapter
+     *
+     * @var \DAL\Adapter\BaseAdapter
+     */
     private static $dba;
 
     /**
@@ -23,6 +29,7 @@ class Context
      *
      * @param string $key
      * @return mixed
+     * @throws OutOfBoundsException if key not set
      */
     public static function get(string $key)
     {
@@ -36,7 +43,7 @@ class Context
      * Set a variable in context storage
      *
      * @param string $key
-     * @param [type] $val
+     * @param mixed $val
      * @return void
      */
     public static function set(string $key, $val): void
@@ -77,7 +84,7 @@ class Context
 
     /**
      * Add a debugging message to context storage
-     * 
+     *
      * If debug mode is set, the string will be added and displayed as part
      * of the request output
      *
@@ -98,15 +105,9 @@ class Context
      * @param string $class
      * @return void
      */
-    public static function flash(string $message, string $class = "flash"): void
+    public static function flash(string $message, string $class = 'flash'): void
     {
-        if (isset($_SESSION['flash'])) {
-            array_push($_SESSION['flash'], [$class, $message]);
-        } else {
-            $_SESSION['flash'] = [
-                [$class, $message]
-            ];
-        }
+        $_SESSION['flash'][] = [$class, $message];
     }
 
     /**
