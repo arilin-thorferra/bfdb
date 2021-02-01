@@ -8,9 +8,9 @@
   <ul class="options">
     <?php foreach ($characters as $c): ?>
       <li>
-        <a href="<?= $this->link('Character/edit', $c['uniqid']) ?>"><?= $c[
-  'char_name'
-] ?></a>
+        <a href="<?= $this->link('Character/edit', $c['uniqid']) ?>">
+          <?= $c['char_name'] ?>
+        </a>
       </li>
     <?php endforeach; ?>
   </ul>
