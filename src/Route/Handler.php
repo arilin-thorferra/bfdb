@@ -132,9 +132,7 @@ class Handler
                 break;
             }
             $url = substr($route, 0, $pos);
-            foreach ($args as $arg) {
-                $url .= "/$arg";
-            }
+            $url .= implode('/', $args);
             break;
         }
         if (!$url) {
