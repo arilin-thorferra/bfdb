@@ -21,6 +21,22 @@ class Form
     }
 
     /**
+     * Return value of existing field in the form. If the field does not
+     * exist or has not been filled in, a null symbol ("&empty;") will be
+     * returned.
+     *
+     * @param string $key
+     * @return mixed
+     */
+    public function val(string $key): mixed
+    {
+        if (key_exists($key, $this->values)) {
+            return $this->values[$key];
+        }
+        return '&empty;';
+    }
+
+    /**
      * Make an HTML tag. If a key is supplied, it will be used to look up the
      * proper value from the form object's value property, so forms can be
      * resubmitted. If a body is supplied, it will be wrapped in open/close
