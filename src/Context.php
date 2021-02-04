@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+namespace Bfdb;
+
+use Bfdb\Settings;
+
 /**
  * Context storage singleton class
  *
@@ -36,7 +40,7 @@ class Context
         if (self::has($key)) {
             return self::$context[$key];
         }
-        throw new OutOfBoundsException("Context key '$key' not set");
+        throw new \OutOfBoundsException("Context key '$key' not set");
     }
 
     /**
@@ -93,7 +97,7 @@ class Context
      */
     public static function debug(string $message): void
     {
-        if (\Settings::get('debug')) {
+        if (Settings::get('debug')) {
             self::add('debugmsg', htmlspecialchars($message));
         }
     }
@@ -135,7 +139,7 @@ class Context
     public static function getDba()
     {
         if (!self::$dba) {
-            $db_adapter = '\\DAL\\Adapter\\' . Settings::get('db_adapter');
+            $db_adapter = '\\Bfdb\\DAL\\Adapter\\' . Settings::get('db_adapter');
             self::$dba = new $db_adapter();
         }
         return self::$dba;

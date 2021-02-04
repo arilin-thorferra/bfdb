@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace DAL\Adapter;
+namespace Bfdb\DAL\Adapter;
 
-use PDO;
-use Settings;
+use \PDO;
+use Bfdb\Settings;
 
 /**
  * Database Adapter for SQLite 3

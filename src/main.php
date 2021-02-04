@@ -20,30 +20,30 @@
 
 // Set up BASE_DIR global so the application knows where it's installed
 
-define("BASE_DIR", dirname(__FILE__) . "/");
+define('BASE_DIR', dirname(__FILE__) . '/');
 
-// Register a class autoloader
+// Reluctantly load Composer's PSR-4 autoloader so we can use third-party
+// plugins if we are forced, possibly at gunpoint. If the app immediately
+// dies, run "composer dump-autoload" at the TOP LEVEL directory to create
+// the vendor/ directory at the same level as the src/ directory.
 
-spl_autoload_register(function ($class) {
-    $file = BASE_DIR . str_replace("\\", "/", $class) . ".php";
-    require $file;
-});
+require_once BASE_DIR . '../vendor/autoload.php';
 
-// Register an exception handler
+// Register a snazzy (?) exception handler
 
 set_exception_handler(function ($e) {
     // generate an HTTP 500 (Internal Server Error) response
-    $response = new \Http\Response(500);
+    $response = new Bfdb\Http\Response(500);
     http_response_code(500);
     // if debug mode is enabled, add a stack trace
-    if (Settings::get("debug")) {
+    if (Bfdb\Settings::get('debug')) {
         $response->addToBody(
             '<b style="color:#C00">' .
                 $e->getMessage() .
-                "</b>" .
+                '</b>' .
                 '<pre style="font:12px/1.5 Monaco">' .
                 $e->getTraceAsString() .
-                "</pre>"
+                '</pre>'
         );
     }
     echo $response->getBody();
@@ -51,5 +51,5 @@ set_exception_handler(function ($e) {
 
 // Run the application!
 
-$app = new App();
+$app = new Bfdb\App();
 $app->run();

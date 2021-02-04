@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Action;
+namespace Bfdb\Action;
 
 use Context;
-use Form;
+use Bfdb\Form;
 use DAL\CharacterMapper;
 use DAL\UserMapper;
 

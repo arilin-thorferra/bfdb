@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Action;
+namespace Bfdb\Action;
 
 class Index extends BaseAction
 {

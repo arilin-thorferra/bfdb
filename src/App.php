@@ -2,8 +2,13 @@
 
 declare(strict_types=1);
 
-use Http\Request;
-use Route\Route;
+namespace Bfdb;
+
+use Bfdb\Http\Request;
+use Bfdb\Route\Route;
+use Bfdb\Route\Handler;
+use Bfdb\Context;
+use Bfdb\Settings;
 
 /**
  * Application Front Controller
@@ -26,13 +31,13 @@ class App
             $_SESSION['token'] = bin2hex(random_bytes(32));
         }
         // instantiate request
-        $request = new \Http\Request(
+        $request = new Request(
             $_SERVER['REQUEST_URI'],
             $_SERVER['REQUEST_METHOD']
         );
         // load and process routes
         $routes = Settings::routes();
-        $handler = new \Route\Handler($routes);
+        $handler = new Handler($routes);
         $route = $handler->findRoute($request);
         // execute request
         $response = $handler->execute($request, $route);
@@ -41,7 +46,7 @@ class App
         }
         // send response
         if (headers_sent()) {
-            throw new RuntimeException('Headers already sent');
+            throw new \RuntimeException('Headers already sent');
         }
         http_response_code($response->getStatus());
         $headers = $response->getHeaders();
@@ -60,11 +65,18 @@ class App
      */
     private function debugInfo(Request $request, Route $route): string
     {
-        $info = "<p class='debuginfo'>" .
-            'Request path: ' . $request->getPath() .
-            '<br>Request method: ' . $request->getMethod();
+        $info =
+            "<p class='debuginfo'>" .
+            'Request path: ' .
+            $request->getPath() .
+            '<br>Request method: ' .
+            $request->getMethod();
         if ($route->isSet()) {
-            $info .= '<br>Resolved Route: ' . $route->getClass() . '::' . $route->getMethod() .
+            $info .=
+                '<br>Resolved Route: ' .
+                $route->getClass() .
+                '::' .
+                $route->getMethod() .
                 '<br>Route arguments: ' .
                 var_export($route->getArgs(), true);
         }

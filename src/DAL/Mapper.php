@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DAL;
+namespace Bfdb\DAL;
 
-use Context;
+use Bfdb\Context;
 use RuntimeException;
 
 /**

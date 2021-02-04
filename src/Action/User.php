@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Action;
+namespace Bfdb\Action;
 
-use Context;
-use Form;
-use DAL\CharacterMapper;
-use DAL\UserMapper;
+use Bfdb\Context;
+use Bfdb\Form;
+use Bfdb\DAL\CharacterMapper;
+use Bfdb\DAL\UserMapper;
 
 class User extends BaseAction
 {

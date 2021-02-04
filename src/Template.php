@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+namespace Bfdb;
+
+use Bfdb\Route\Handler;
+
 /**
  * Simple template rendering class
  */
@@ -70,7 +74,7 @@ class Template
     {
         if (!file_exists($_file)) {
             $error = "Template '$_file' not found";
-            throw new RuntimeException($error);
+            throw new \RuntimeException($error);
             return '';
         }
         extract($_args, EXTR_SKIP);
@@ -103,7 +107,7 @@ class Template
     protected function link(string $route, $args = []): string
     {
         $routes = Settings::routes();
-        $handler = new \Route\Handler($routes);
+        $handler = new Handler($routes);
         return $handler->findUrl($route, (array) $args);
     }
 

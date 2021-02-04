@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DAL\Adapter;
+namespace Bfdb\DAL\Adapter;
 
 use PDO;
 
