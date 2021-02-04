@@ -2,3 +2,5 @@ src/db/*.db
 tags
 .nova/*
 config.codekit3
+
+/vendor/

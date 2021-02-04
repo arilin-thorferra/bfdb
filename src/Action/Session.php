@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Action;
+namespace Bfdb\Action;
 
-use Form;
-use Context;
+use Bfdb\Form;
+use Bfdb\Context;
+use Bfdb\DAL;
 
 class Session extends BaseAction
 {
@@ -27,7 +28,7 @@ class Session extends BaseAction
     public function post_login()
     {
         $f = new Form($_POST);
-        $u = new \DAL\UserMapper();
+        $u = new DAL\UserMapper();
 
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             $f->setError('email', 'Invalid email address');

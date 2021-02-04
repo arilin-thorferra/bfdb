@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Bfdb;
+
 /**
  * Settings singleton class
  * 
@@ -38,7 +40,7 @@ class Settings
         if (array_key_exists($key, self::$settings)) {
             return self::$settings[$key];
         }
-        throw new OutOfBoundsException("Settings key '$key' not set");
+        throw new \OutOfBoundsException("Settings key '$key' not set");
     }
 
     /**

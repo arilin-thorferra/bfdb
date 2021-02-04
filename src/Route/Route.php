@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Route;
+namespace Bfdb\Route;
 
 /**
  * Route wrapper class

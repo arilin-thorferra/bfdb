@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Route;
+namespace Bfdb\Route;
 
-use Http\Request;
-use Http\Response;
+use Bfdb\Http\Request;
+use Bfdb\Http\Response;
+use Bfdb\Context;
 use ReflectionClass;
 use ReflectionMethod;
 use RuntimeException;
@@ -82,10 +83,10 @@ class Handler
         if (!$route->isSet()) {
             $error = "No route for '{$request->getPath()}'";
             error_log($error);
-            \Context::debug($error);
+            Context::debug($error);
             return new Response(404);
         }
-        $action_class = 'Action\\' . $route->getClass();
+        $action_class = 'Bfdb\\Action\\' . $route->getClass();
         $action = new $action_class($request);
         $method = $route->getMethod();
         // check if this method is white- or black-listed
@@ -104,7 +105,7 @@ class Handler
             } else {
                 $response = new Response(500);
             }
-            \Context::debug($error);
+            Context::debug($error);
             return $response;
         }
         $response = $action->$call($route->getArgs());

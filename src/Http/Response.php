@@ -2,7 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Http;
+namespace Bfdb\Http;
+
+use Bfdb\Template;
+use Bfdb\Settings;
+use Bfdb\Route\Handler;
 
 class Response
 {
@@ -128,7 +132,7 @@ class Response
     {
         $this->status_code = $code;
         if ($clear && $code != 204) {
-            $t = new \Template();
+            $t = new Template();
             if (file_exists(BASE_DIR . "templates/_$code.phtml")) {
                 $template = $t->render("_$code");
             } else {
@@ -177,8 +181,8 @@ class Response
         array$args = []
     ): Response
     {
-        $routes = \Settings::routes();
-        $handler = new \Route\Handler($routes);
+        $routes = Settings::routes();
+        $handler = new Handler($routes);
         $url = $handler->findUrl($route, $args);
         $this->setStatus($type);
         $this->setHeader('Location', $url);

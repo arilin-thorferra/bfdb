@@ -2,9 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Action;
+namespace Bfdb\Action;
 
-use \Http\Response;
+use Bfdb\Http\Request;
+use Bfdb\Http\Response;
+use Bfdb\Template;
+use Bfdb\Form;
 
 abstract class BaseAction
 {
@@ -33,7 +36,7 @@ abstract class BaseAction
      *
      * @param Http\Request $request
      */
-    public function __construct(\Http\Request $request)
+    public function __construct(Request $request)
     {
         $this->request = $request;
         $this->response = new Response();
@@ -52,7 +55,7 @@ abstract class BaseAction
      */
     protected function renderResponse(string $file, array $args = []): Response
     {
-        $template = new \Template();
+        $template = new Template();
         $class = explode('\\', static::class);
         $file = end($class) . '/' . $file;
         return $this->response->setBody($template->render($file, $args));
@@ -72,7 +75,7 @@ abstract class BaseAction
      */
     protected function renderFormResponse(
         string $file,
-        \Form $f,
+        Form $f,
         array $args = [],
         $formvar = 'f'
     ): Response {
